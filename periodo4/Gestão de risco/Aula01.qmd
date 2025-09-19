@@ -1,0 +1,218 @@
+---
+title: "Análise do Ativo CPFE3"
+format:
+  html:
+    code-fold: true
+    code-tools: true
+    toc: true
+    toc-depth: 3
+    number-sections: true
+editor: visual
+---
+
+# Importação de dados do Yahoo! Finance
+
+```{r}
+# Remoção de objetos anteriores
+remove(list = ls())
+gc()
+par(mfrow = c(1, 1))
+options(scipen = 999, max.print = 100000)
+date()
+
+# Diretório de trabalho
+setwd("C:/Users/Carolina/Desktop/Projetos/CDN_UFPB/periodo4/Gestão de risco")
+
+# Carregamento do pacote
+library(tseries)
+```
+
+### Definição do intervalo de datas
+
+```{r}
+dataini <- "2025-04-01"
+datafim <- "2025-06-28"
+```
+
+### Coleta de dados do ativo CPFE3
+
+```{r}
+cpfe3 <- get.hist.quote("cpfe3.sa",
+                        quote = "Close",
+                        start = dataini,
+                        end = datafim)
+
+cpfe3 <- na.omit(cpfe3)  # Remove valores ausentes, se houver
+
+length(cpfe3)  # Quantidade de observações
+cpfe3  # Série de preços
+plot(cpfe3, main = "Preços de Fechamento - CPFE3")
+```
+
+# Estatísticas descritivas
+
+### Cálculo da média e do desvio padrão dos preços
+
+```{r}
+Media.cpfe3 <- mean(cpfe3)
+Media.cpfe3  # Valor médio dos preços
+
+Desvio.cpfe3 <- sd(cpfe3)
+Desvio.cpfe3  # Desvio padrão dos preços
+```
+
+### Cálculo do coeficiente de variação dos preços (risco relativo)
+
+```{r}
+cvcpfe3 <- sd(cpfe3) / mean(cpfe3) * 100
+cvcpfe3  # Coeficiente de variação em %
+```
+
+# Análise dos retornos
+
+### Cálculo dos retornos logarítmicos
+
+```{r}
+rcpfe3 <- diff(log(cpfe3))
+rcpfe3 <- na.omit(rcpfe3)
+rcpfe3  # Retornos logarítmicos
+```
+
+### Média e desvio padrão dos retornos
+
+```{r}
+mrcple <- mean(rcpfe3)
+mrcple * 100  # Retorno médio diário em %
+
+Drcple <- sd(rcpfe3)
+Drcple  # Desvio padrão dos retornos
+```
+
+### Cálculo do risco (CV) dos retornos
+
+```{r}
+CVcple <- Drcple / (mrcple * 100)
+CVcple * 100  # Coeficiente de variação dos retornos em %
+```
+
+# Distribuição dos preços e retornos
+
+### Histogramas
+
+```{r}
+par(mfrow = c(1, 2))
+plot(cpfe3, main = "Série de Preços")
+hist(cpfe3, nclass = 30, col = "blue", main = "Histograma dos Preços")
+
+plot(rcpfe3, main = "Série de Retornos")
+hist(rcpfe3, nclass = 30, col = "blue", main = "Histograma dos Retornos")
+```
+
+# Medida de volatilidade anualizada (amostra)
+
+```{r}
+Drcple <- sd(rcpfe3)
+Volcple <- (Drcple * 100) * sqrt(252)
+Volcple  # Volatilidade anualizada em %
+```
+
+# Análise da distribuição normal
+
+## Gráficos de densidade para 1, 2 e 3 desvios padrões
+
+```{r}
+Media.cpfe3
+Desvio.cpfe3
+
+par(mfrow = c(2, 2))
+
+# 1 DP
+x <- seq(Media.cpfe3 - Desvio.cpfe3, Media.cpfe3 + Desvio.cpfe3, length = 60)
+y <- dnorm(x, Media.cpfe3, Desvio.cpfe3)
+plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 1 DP")
+
+# 2 DP
+x <- seq(Media.cpfe3 - 2 * Desvio.cpfe3, Media.cpfe3 + 2 * Desvio.cpfe3, length = 60)
+y <- dnorm(x, Media.cpfe3, Desvio.cpfe3)
+plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 2 DP")
+
+# 3 DP
+x <- seq(Media.cpfe3 - 3 * Desvio.cpfe3, Media.cpfe3 + 3 * Desvio.cpfe3, length = 60)
+y <- dnorm(x, Media.cpfe3, Desvio.cpfe3)
+plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 3 DP")
+
+# Faixa maior
+x <- seq(Media.cpfe3 - 2.5 * Desvio.cpfe3, Media.cpfe3 + 2.5 * Desvio.cpfe3, length = 60)
+y <- dnorm(x, Media.cpfe3, Desvio.cpfe3)
+plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo mais amplo")
+```
+
+## Probabilidades dentro dos intervalos da média
+
+```{r}
+# 1 DP
+pnorm(Media.cpfe3 + Desvio.cpfe3, Media.cpfe3, Desvio.cpfe3) -
+  pnorm(Media.cpfe3 - Desvio.cpfe3, Media.cpfe3, Desvio.cpfe3)
+
+# 2 DP
+pnorm(Media.cpfe3 + 2 * Desvio.cpfe3, Media.cpfe3, Desvio.cpfe3) -
+  pnorm(Media.cpfe3 - 2 * Desvio.cpfe3, Media.cpfe3, Desvio.cpfe3)
+
+# 3 DP
+pnorm(Media.cpfe3 + 3 * Desvio.cpfe3, Media.cpfe3, Desvio.cpfe3) -
+  pnorm(Media.cpfe3 - 3 * Desvio.cpfe3, Media.cpfe3, Desvio.cpfe3)
+```
+
+## Probabilidade de preços abaixo de um valor
+
+```{r}
+pnorm(34.875, Media.cpfe3, Desvio.cpfe3)
+pnorm(38, Media.cpfe3, Desvio.cpfe3)
+pnorm(32, Media.cpfe3, Desvio.cpfe3)
+pnorm(33, Media.cpfe3, Desvio.cpfe3)
+pnorm(37.13255, Media.cpfe3, Desvio.cpfe3, lower.tail = TRUE)
+pnorm(39, Media.cpfe3, Desvio.cpfe3, lower.tail = TRUE)
+pnorm(41, Media.cpfe3, Desvio.cpfe3, lower.tail = TRUE)
+```
+
+## Cálculo de quantis para níveis de confiança
+
+```{r}
+qnorm(0.90, Media.cpfe3, Desvio.cpfe3)
+qnorm(0.95, Media.cpfe3, Desvio.cpfe3)
+qnorm(0.975, Media.cpfe3, Desvio.cpfe3)
+qnorm(0.99, Media.cpfe3, Desvio.cpfe3)
+```
+
+## Cálculo da densidade para valores específicos
+
+```{r}
+dnorm(34.875, Media.cpfe3, Desvio.cpfe3)
+dnorm(38, Media.cpfe3, Desvio.cpfe3)
+dnorm(37.13255, Media.cpfe3, Desvio.cpfe3)
+```
+
+# Considerações Finais
+
+A análise do ativo **CPFE3** no período entre abril e junho de 2025 evidenciou:
+
+-   Uma **média de preços** em torno de `r round(Media.cpfe3, 2)` reais, com **desvio padrão** de `r round(Desvio.cpfe3, 2)`, refletindo oscilação moderada;
+-   O **coeficiente de variação dos preços** mostrou um risco relativo controlado;
+-   A **média dos retornos logarítmicos** foi positiva, o que indica valorização média diária no período;
+-   A **volatilidade anualizada**, em torno de `r round(Volcple, 2)`%, sugere risco intermediário para padrões do mercado de ações;
+-   A hipótese de **distribuição normal** foi aproximada nos testes gráficos e de probabilidade, o que permite interpretações com base em medidas probabilísticas clássicas;
+-   As análises de densidade e quantis podem auxiliar na precificação de opções ou na estimativa de valor em risco (VaR).
+
+Portanto, o ativo apresentou **comportamento consistente**, com retornos relativamente estáveis e perfil de risco que pode ser interessante para investidores com perfil moderado.
+
+# Referências Bibliográficas
+
+-   Alexandre Assaf Neto. *Mercado Financeiro*. Atlas, 2022.
+-   Gitman, L. J. *Princípios de Administração Financeira*. Pearson, 2015.
+-   Hull, J. C. *Introdução aos Derivativos*. Bookman, 2013.
+-   Damodaran, A. *Investment Valuation*. Wiley, 2012.
+-   Yahoo Finance (https://finance.yahoo.com/) – Base de dados utilizada.
+
+------------------------------------------------------------------------
+
+## 
