@@ -220,7 +220,7 @@ knitr::kable(tabela_resumo, digits = 4, caption = "Média e Desvio Padrão dos A
                 full_width = FALSE)
 ```
 
-### Cálculo do coeficiente de variação dos preços 
+### Cálculo do coeficiente de variação dos preços
 
 ::: {style="text-align: justify"}
 Com os resultados obtidos, observa-se que o ativo **LWSA3** apresentou o maior coeficiente de variação, atingindo **12,72%**, enquanto o menor valor foi registrado pela **ELET6**, com **2,74%**. Em seguida, destacam-se **BRFS3 (4,21%)**, **ITSA4 (5,42%)** e **RENT3 (6,23%)**. Para efeito de comparação, o **Ibovespa** apresentou um coeficiente de **3,01%**.
@@ -289,17 +289,17 @@ Ao analisarmos a **média** e o **desvio-padrão** dos retornos, buscamos compre
 
 Os resultados observados foram:
 
--    **LWSA3**: retorno médio **0,685%**, desvio-padrão **0,0330**, coeficiente **4,82**
+-   **LWSA3**: retorno médio **0,685%**, desvio-padrão **0,0330**, coeficiente **4,82**
 
--    **ELET6**: retorno médio **-0,0188%**, desvio-padrão **0,0120**, coeficiente **-63,64**
+-   **ELET6**: retorno médio **-0,0188%**, desvio-padrão **0,0120**, coeficiente **-63,64**
 
--    **ITSA4**: retorno médio **0,2139%**, desvio-padrão **0,0123**, coeficiente **5,75**
+-   **ITSA4**: retorno médio **0,2139%**, desvio-padrão **0,0123**, coeficiente **5,75**
 
--    **RENT3**: retorno médio **0,2446%**, desvio-padrão **0,0245**, coeficiente **10,00**
+-   **RENT3**: retorno médio **0,2446%**, desvio-padrão **0,0245**, coeficiente **10,00**
 
--    **BRFS3**: retorno médio **-0,0203%**, desvio-padrão **0,0248**, coeficiente **-121,97**
+-   **BRFS3**: retorno médio **-0,0203%**, desvio-padrão **0,0248**, coeficiente **-121,97**
 
--    **IBOV**: retorno médio **0,0723%**, desvio-padrão **0,0098**, coeficiente **13,60**
+-   **IBOV**: retorno médio **0,0723%**, desvio-padrão **0,0098**, coeficiente **13,60**
 
 A **BRFS3** se destaca por apresentar coeficiente extremamente elevado e negativo, refletindo forte volatilidade associada a uma tendência de perda. Em seguida aparece a **ELET6**, também com coeficiente negativo expressivo. Entre os ativos com coeficientes positivos, a **LWSA3** apresentou o menor valor (4,82), sugerindo maior estabilidade relativa, seguida por **ITSA4** (5,75) e **RENT3** (10,00), que apesar de mais volátil, ainda demonstrou retorno positivo.
 
@@ -341,9 +341,9 @@ A análise dos histogramas possibilita avaliar o formato da distribuição dos p
 
 Para confirmar essas evidências visuais, aplicou-se o **teste de Jarque-Bera**, que avalia se uma série segue ou não a distribuição normal, com base na hipótese nula de normalidade (H₀). Os resultados mostraram que:
 
--    Ativos como **LWSA3 (p=0,0195)**, **ITSA4 (p=0,0154)**, **RENT3 (p=0,0272)** e o **IBOV (p=0,0066)** rejeitaram a hipótese nula ao nível de 5% de significância, evidenciando que seus retornos **não seguem a distribuição normal**.
+-   Ativos como **LWSA3 (p=0,0195)**, **ITSA4 (p=0,0154)**, **RENT3 (p=0,0272)** e o **IBOV (p=0,0066)** rejeitaram a hipótese nula ao nível de 5% de significância, evidenciando que seus retornos **não seguem a distribuição normal**.
 
--    Já **ELET6 (p=0,1748)** e **BRFS3 (p=0,1631)** não rejeitaram a hipótese nula, indicando que não há evidências estatísticas suficientes para descartar a normalidade de suas distribuições.
+-   Já **ELET6 (p=0,1748)** e **BRFS3 (p=0,1631)** não rejeitaram a hipótese nula, indicando que não há evidências estatísticas suficientes para descartar a normalidade de suas distribuições.
 
 Portanto, ainda que alguns histogramas sugiram proximidade com a forma normal, o **teste estatístico confirma que a maioria dos ativos analisados não segue rigorosamente uma distribuição normal**. Esse resultado é relevante para a gestão de risco, pois a não normalidade dos retornos implica maior cautela na aplicação de modelos que assumem distribuição normal, especialmente na mensuração de volatilidade e no cálculo de Value at Risk (VaR).
 
@@ -423,226 +423,222 @@ knitr::kable(tabela_jb, digits = 4, caption = "Teste de Normalidade (Jarque-Bera
 -   O estudo do comportamento individual é estudada na teoria da escolha do consumidor, que analisa como indivíduos alocam recursos para maximizar sua utilidade diante de restrições orçamentárias. o autor Hal Varian, em seus estudos sobre escolha intertemporal, descreve como as decisões de consumo e poupança são influenciadas pela taxa de juros, que determina o custo de adiar ou antecipar o consumo. Nesse contexto, o indivíduo compara o consumo presente e futuro utilizando conceitos como valor presente, avaliando como diferentes taxas de juros alteram sua restrição orçamentária intertemporal. Além disso, quando há incerteza sobre retornos futuros, a função de utilidade sob risco e a análise probabilística, como a função de densidade acumulada, ajudam a explicar como diferentes perfis de investidores tomam decisões entre opções seguras (renda fixa) e arriscadas (ações), considerando retorno esperado e tolerância ao risco , logo podemos observar que a depender do apetiti para o risco do investidor havera uma utilidade que é maximizada de acordo com o o cenerio que melhor se encaixa com o apetite para o risco do investidor a densidade da probabilidade é útil nesse momento
 :::
 
--   
+```{r}
+Drlwsa3 <- sd(rlwsa3); Vollwsa3 <- (Drlwsa3*100)*sqrt(252)
+Drelet6 <- sd(relet6); Volelet6 <- (Drelet6*100)*sqrt(252)
+Dritsa4 <- sd(ritsa4); Volitsa4 <- (Dritsa4*100)*sqrt(252)
+Drbbdc4 <- sd(rrent3); Volrent3 <- (Drrent3*100)*sqrt(252)
+Drmrfg3 <- sd(rbrfs3); Volbrfs3 <- (Drbrfs3*100)*sqrt(252)
+Dribov <- sd(ribov); Volibov <- (Dribov*100)*sqrt(252)
 
--   
+# Cria a tabela com os ativos, média e desvio padrão
+tabela_vol <- tibble::tibble(
+  Ativo = c("LWSA3", "ELET6", "ITSA4", "RENT3", "BRFS3", "IBOV"),
+  Volatilidade = c(Vollwsa3, Volelet6, Volitsa4, Volrent3, Volbrfs3, Volibov),)
 
-    ```{r}
-    Drlwsa3 <- sd(rlwsa3); Vollwsa3 <- (Drlwsa3*100)*sqrt(252)
-    Drelet6 <- sd(relet6); Volelet6 <- (Drelet6*100)*sqrt(252)
-    Dritsa4 <- sd(ritsa4); Volitsa4 <- (Dritsa4*100)*sqrt(252)
-    Drbbdc4 <- sd(rrent3); Volrent3 <- (Drrent3*100)*sqrt(252)
-    Drmrfg3 <- sd(rbrfs3); Volbrfs3 <- (Drbrfs3*100)*sqrt(252)
-    Dribov <- sd(ribov); Volibov <- (Dribov*100)*sqrt(252)
-
-    # Cria a tabela com os ativos, média e desvio padrão
-    tabela_vol <- tibble::tibble(
-      Ativo = c("LWSA3", "ELET6", "ITSA4", "RENT3", "BRFS3", "IBOV"),
-      Volatilidade = c(Vollwsa3, Volelet6, Volitsa4, Volrent3, Volbrfs3, Volibov),)
-
-    # Reordena os ativos deixando IBOV por último
-    tabela_vol$Ativo <- factor(tabela_vol$Ativo,
-                                     levels = c("LWSA3", "ELET6", "ITSA4", "RENT3", "BRFS3", "IBOV"))
+# Reordena os ativos deixando IBOV por último
+tabela_vol$Ativo <- factor(tabela_vol$Ativo,
+                                 levels = c("LWSA3", "ELET6", "ITSA4", "RENT3", "BRFS3", "IBOV"))
 
 
-    # Exibe a tabela 
-    knitr::kable(tabela_vol, digits = 2, caption = "Coeficiente de Variação (Preço) dos Ativos")%>%
-      kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"),
-                    full_width = FALSE)
-    ```
+# Exibe a tabela 
+knitr::kable(tabela_vol, digits = 2, caption = "Coeficiente de Variação (Preço) dos Ativos")%>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+                full_width = FALSE)
+```
 
-    -   ::: {style="text-align: justify"}
-        Ao analisarmos a volatilidade dos ativos em comparação com o **Ibovespa** — principal índice de referência do mercado brasileiro, que apresentou volatilidade de **15,62%** — observamos que **todos os ativos da carteira registram níveis superiores ao benchmark**.
+-   ::: {style="text-align: justify"}
+    Ao analisarmos a volatilidade dos ativos em comparação com o **Ibovespa** — principal índice de referência do mercado brasileiro, que apresentou volatilidade de **15,62%** — observamos que **todos os ativos da carteira registram níveis superiores ao benchmark**.
 
-        A **LocaWeb (LWSA3)** se destaca como a mais volátil, com **52,47%**, evidenciando risco mais de três vezes superior ao do mercado. Em seguida aparecem **BRF (BRFS3)** com **39,34%** e **Localiza (RENT3)** com **38,84%**, também muito acima do índice. Já **Eletrobras (ELET6)** e **Itaúsa (ITSA4)**, embora tenham registrado as menores volatilidades entre os ativos (**19,01%** e **19,52%**, respectivamente), ainda assim se situam acima da volatilidade do IBOV.
+    A **LocaWeb (LWSA3)** se destaca como a mais volátil, com **52,47%**, evidenciando risco mais de três vezes superior ao do mercado. Em seguida aparecem **BRF (BRFS3)** com **39,34%** e **Localiza (RENT3)** com **38,84%**, também muito acima do índice. Já **Eletrobras (ELET6)** e **Itaúsa (ITSA4)**, embora tenham registrado as menores volatilidades entre os ativos (**19,01%** e **19,52%**, respectivamente), ainda assim se situam acima da volatilidade do IBOV.
 
-        Esses resultados mostram que os investidores expostos a essa carteira assumem **níveis de risco significativamente maiores do que aqueles de uma carteira diversificada que replica o índice de mercado**. Isso exige **maior tolerância à volatilidade** e reforça a importância de alinhar as expectativas de retorno com o perfil de risco assumido.
-        :::
-
-    -   
-
-        # Análise da distribuição normal
-
-        ## Gráficos de densidade para 1, 2 e 3 desvios padrões
-
-    ::: {style="text-align: justify"}
-    O comportamento individual é analisado pela teoria da escolha do consumidor, que estuda como as pessoas alocam seus recursos para maximizar a utilidade, respeitando limitações orçamentárias. Hal Varian, em seus estudos sobre escolha intertemporal, mostra que as decisões de consumo e poupança são influenciadas pela taxa de juros, que representa o custo de antecipar ou postergar o consumo. Nesse contexto, o indivíduo compara o consumo presente e futuro usando conceitos como valor presente, avaliando como diferentes taxas de juros afetam sua restrição orçamentária ao longo do tempo.
-
-    Quando os retornos futuros são incertos, a função de utilidade sob risco e ferramentas probabilísticas, como a função de densidade acumulada, ajudam a compreender como investidores com perfis distintos escolhem entre opções seguras, como renda fixa, e opções mais arriscadas, como ações, considerando o retorno esperado e sua tolerância ao risco.
-
-    A análise estatística dos retornos financeiros pode ser ilustrada usando desvios-padrão (DP) para entender a dispersão dos retornos:
-
-    -    O intervalo de 1 DP cobre cerca de 68% dos retornos esperados.
-
-    -   O intervalo de 2 DPs abrange aproximadamente 95% dos retornos.
-
-    -   O intervalo de 3 DPs inclui quase 99,7% dos retornos possíveis (regra empírica da normal).
-
-    -   O intervalo de 2,5 DPs serve como comparação adicional.
-
-        Ao aplicar essa análise aos ativos LWSA3, ELET6, ITSA4, RENT3 e BRFS3, bem como ao Ibovespa, é possível visualizar graficamente:
-
-    -    Qual ativo apresenta maior dispersão (volatilidade) em torno da média.
-
-    -   Se os retornos estão concentrados próximos da média ou mais espalhados.
-
-    -    Como o Ibovespa, por ser um índice diversificado, tende a ter menor dispersão em comparação com ativos individuais.
+    Esses resultados mostram que os investidores expostos a essa carteira assumem **níveis de risco significativamente maiores do que aqueles de uma carteira diversificada que replica o índice de mercado**. Isso exige **maior tolerância à volatilidade** e reforça a importância de alinhar as expectativas de retorno com o perfil de risco assumido.
     :::
 
-    ```{r}
-    # novos ("lwsa3.sa", "elet6.sa", "itsa4.sa", "rent3.sa", "brfs3.sa")
+-   
 
-    ## LWSA3
-    Media.lwsa3
-    Desvio.lwsa3
+    # Análise da distribuição normal
 
-    par(mfrow = c(2, 2), oma = c(0, 0, 3, 0))
+    ## Gráficos de densidade para 1, 2 e 3 desvios padrões
 
-    # 1 DP
-    x <- seq(Media.lwsa3 - Desvio.lwsa3, Media.lwsa3 + Desvio.lwsa3, length = 60)
-    y <- dnorm(x, Media.lwsa3, Desvio.lwsa3)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 1 DP")
+::: {style="text-align: justify"}
+O comportamento individual é analisado pela teoria da escolha do consumidor, que estuda como as pessoas alocam seus recursos para maximizar a utilidade, respeitando limitações orçamentárias. Hal Varian, em seus estudos sobre escolha intertemporal, mostra que as decisões de consumo e poupança são influenciadas pela taxa de juros, que representa o custo de antecipar ou postergar o consumo. Nesse contexto, o indivíduo compara o consumo presente e futuro usando conceitos como valor presente, avaliando como diferentes taxas de juros afetam sua restrição orçamentária ao longo do tempo.
 
-    # 2 DP
-    x <- seq(Media.lwsa3 - 2 * Desvio.lwsa3, Media.lwsa3 + 2 * Desvio.lwsa3, length = 60)
-    y <- dnorm(x, Media.lwsa3, Desvio.lwsa3)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 2 DP")
+Quando os retornos futuros são incertos, a função de utilidade sob risco e ferramentas probabilísticas, como a função de densidade acumulada, ajudam a compreender como investidores com perfis distintos escolhem entre opções seguras, como renda fixa, e opções mais arriscadas, como ações, considerando o retorno esperado e sua tolerância ao risco.
 
-    # 3 DP
-    x <- seq(Media.lwsa3 - 3 * Desvio.lwsa3, Media.lwsa3 + 3 * Desvio.lwsa3, length = 60)
-    y <- dnorm(x, Media.lwsa3, Desvio.lwsa3)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 3 DP")
+A análise estatística dos retornos financeiros pode ser ilustrada usando desvios-padrão (DP) para entender a dispersão dos retornos:
 
-    # Faixa maior
-    x <- seq(Media.lwsa3 - 2.5 * Desvio.lwsa3, Media.lwsa3 + 2.5 * Desvio.lwsa3, length = 60)
-    y <- dnorm(x, Media.lwsa3, Desvio.lwsa3)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo mais amplo")
+-   O intervalo de 1 DP cobre cerca de 68% dos retornos esperados.
 
-    # Título geral
-    mtext("LWSA3", outer = TRUE, cex = 1.5)
+-   O intervalo de 2 DPs abrange aproximadamente 95% dos retornos.
 
-    ## ELET6
-    Media.elet6
-    Desvio.elet6
+-   O intervalo de 3 DPs inclui quase 99,7% dos retornos possíveis (regra empírica da normal).
 
-    par(mfrow = c(2, 2), oma = c(0, 0, 3, 0))
+-   O intervalo de 2,5 DPs serve como comparação adicional.
 
-    x <- seq(Media.elet6 - Desvio.elet6, Media.elet6 + Desvio.elet6, length = 60)
-    y <- dnorm(x, Media.elet6, Desvio.elet6)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 1 DP")
+    Ao aplicar essa análise aos ativos LWSA3, ELET6, ITSA4, RENT3 e BRFS3, bem como ao Ibovespa, é possível visualizar graficamente:
 
-    x <- seq(Media.elet6 - 2 * Desvio.elet6, Media.elet6 + 2 * Desvio.elet6, length = 60)
-    y <- dnorm(x, Media.elet6, Desvio.elet6)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 2 DP")
+-   Qual ativo apresenta maior dispersão (volatilidade) em torno da média.
 
-    x <- seq(Media.elet6 - 3 * Desvio.elet6, Media.elet6 + 3 * Desvio.elet6, length = 60)
-    y <- dnorm(x, Media.elet6, Desvio.elet6)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 3 DP")
+-   Se os retornos estão concentrados próximos da média ou mais espalhados.
 
-    x <- seq(Media.elet6 - 2.5 * Desvio.elet6, Media.elet6 + 2.5 * Desvio.elet6, length = 60)
-    y <- dnorm(x, Media.elet6, Desvio.elet6)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo mais amplo")
+-   Como o Ibovespa, por ser um índice diversificado, tende a ter menor dispersão em comparação com ativos individuais.
+:::
 
-    mtext("ELET6", outer = TRUE, cex = 1.5)
+```{r}
+# novos ("lwsa3.sa", "elet6.sa", "itsa4.sa", "rent3.sa", "brfs3.sa")
 
-    ## ITSA4
-    Media.itsa4
-    Desvio.itsa4
+## LWSA3
+Media.lwsa3
+Desvio.lwsa3
 
-    par(mfrow = c(2, 2), oma = c(0, 0, 3, 0))
+par(mfrow = c(2, 2), oma = c(0, 0, 3, 0))
 
-    x <- seq(Media.itsa4 - Desvio.itsa4, Media.itsa4 + Desvio.itsa4, length = 60)
-    y <- dnorm(x, Media.itsa4, Desvio.itsa4)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 1 DP")
+# 1 DP
+x <- seq(Media.lwsa3 - Desvio.lwsa3, Media.lwsa3 + Desvio.lwsa3, length = 60)
+y <- dnorm(x, Media.lwsa3, Desvio.lwsa3)
+plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 1 DP")
 
-    x <- seq(Media.itsa4 - 2 * Desvio.itsa4, Media.itsa4 + 2 * Desvio.itsa4, length = 60)
-    y <- dnorm(x, Media.itsa4, Desvio.itsa4)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 2 DP")
+# 2 DP
+x <- seq(Media.lwsa3 - 2 * Desvio.lwsa3, Media.lwsa3 + 2 * Desvio.lwsa3, length = 60)
+y <- dnorm(x, Media.lwsa3, Desvio.lwsa3)
+plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 2 DP")
 
-    x <- seq(Media.itsa4 - 3 * Desvio.itsa4, Media.itsa4 + 3 * Desvio.itsa4, length = 60)
-    y <- dnorm(x, Media.itsa4, Desvio.itsa4)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 3 DP")
+# 3 DP
+x <- seq(Media.lwsa3 - 3 * Desvio.lwsa3, Media.lwsa3 + 3 * Desvio.lwsa3, length = 60)
+y <- dnorm(x, Media.lwsa3, Desvio.lwsa3)
+plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 3 DP")
 
-    x <- seq(Media.itsa4 - 2.5 * Desvio.itsa4, Media.itsa4 + 2.5 * Desvio.itsa4, length = 60)
-    y <- dnorm(x, Media.itsa4, Desvio.itsa4)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo mais amplo")
+# Faixa maior
+x <- seq(Media.lwsa3 - 2.5 * Desvio.lwsa3, Media.lwsa3 + 2.5 * Desvio.lwsa3, length = 60)
+y <- dnorm(x, Media.lwsa3, Desvio.lwsa3)
+plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo mais amplo")
 
-    mtext("ITSA4", outer = TRUE, cex = 1.5)
+# Título geral
+mtext("LWSA3", outer = TRUE, cex = 1.5)
 
-    ## RENT3
-    Media.rent3
-    Desvio.rent3
+## ELET6
+Media.elet6
+Desvio.elet6
 
-    par(mfrow = c(2, 2), oma = c(0, 0, 3, 0))
+par(mfrow = c(2, 2), oma = c(0, 0, 3, 0))
 
-    x <- seq(Media.rent3 - Desvio.rent3, Media.rent3 + Desvio.rent3, length = 60)
-    y <- dnorm(x, Media.rent3, Desvio.rent3)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 1 DP")
+x <- seq(Media.elet6 - Desvio.elet6, Media.elet6 + Desvio.elet6, length = 60)
+y <- dnorm(x, Media.elet6, Desvio.elet6)
+plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 1 DP")
 
-    x <- seq(Media.rent3 - 2 * Desvio.rent3, Media.rent3 + 2 * Desvio.rent3, length = 60)
-    y <- dnorm(x, Media.rent3, Desvio.rent3)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 2 DP")
+x <- seq(Media.elet6 - 2 * Desvio.elet6, Media.elet6 + 2 * Desvio.elet6, length = 60)
+y <- dnorm(x, Media.elet6, Desvio.elet6)
+plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 2 DP")
 
-    x <- seq(Media.rent3 - 3 * Desvio.rent3, Media.rent3 + 3 * Desvio.rent3, length = 60)
-    y <- dnorm(x, Media.rent3, Desvio.rent3)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 3 DP")
+x <- seq(Media.elet6 - 3 * Desvio.elet6, Media.elet6 + 3 * Desvio.elet6, length = 60)
+y <- dnorm(x, Media.elet6, Desvio.elet6)
+plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 3 DP")
 
-    x <- seq(Media.rent3 - 2.5 * Desvio.rent3, Media.rent3 + 2.5 * Desvio.rent3, length = 60)
-    y <- dnorm(x, Media.rent3, Desvio.rent3)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo mais amplo")
+x <- seq(Media.elet6 - 2.5 * Desvio.elet6, Media.elet6 + 2.5 * Desvio.elet6, length = 60)
+y <- dnorm(x, Media.elet6, Desvio.elet6)
+plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo mais amplo")
 
-    mtext("RENT3", outer = TRUE, cex = 1.5)
+mtext("ELET6", outer = TRUE, cex = 1.5)
 
-    ## BRFS3
-    Media.brfs3
-    Desvio.brfs3
+## ITSA4
+Media.itsa4
+Desvio.itsa4
 
-    par(mfrow = c(2, 2), oma = c(0, 0, 3, 0))
+par(mfrow = c(2, 2), oma = c(0, 0, 3, 0))
 
-    x <- seq(Media.brfs3 - Desvio.brfs3, Media.brfs3 + Desvio.brfs3, length = 60)
-    y <- dnorm(x, Media.brfs3, Desvio.brfs3)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 1 DP")
+x <- seq(Media.itsa4 - Desvio.itsa4, Media.itsa4 + Desvio.itsa4, length = 60)
+y <- dnorm(x, Media.itsa4, Desvio.itsa4)
+plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 1 DP")
 
-    x <- seq(Media.brfs3 - 2 * Desvio.brfs3, Media.brfs3 + 2 * Desvio.brfs3, length = 60)
-    y <- dnorm(x, Media.brfs3, Desvio.brfs3)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 2 DP")
+x <- seq(Media.itsa4 - 2 * Desvio.itsa4, Media.itsa4 + 2 * Desvio.itsa4, length = 60)
+y <- dnorm(x, Media.itsa4, Desvio.itsa4)
+plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 2 DP")
 
-    x <- seq(Media.brfs3 - 3 * Desvio.brfs3, Media.brfs3 + 3 * Desvio.brfs3, length = 60)
-    y <- dnorm(x, Media.brfs3, Desvio.brfs3)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 3 DP")
+x <- seq(Media.itsa4 - 3 * Desvio.itsa4, Media.itsa4 + 3 * Desvio.itsa4, length = 60)
+y <- dnorm(x, Media.itsa4, Desvio.itsa4)
+plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 3 DP")
 
-    x <- seq(Media.brfs3 - 2.5 * Desvio.brfs3, Media.brfs3 + 2.5 * Desvio.brfs3, length = 60)
-    y <- dnorm(x, Media.brfs3, Desvio.brfs3)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo mais amplo")
+x <- seq(Media.itsa4 - 2.5 * Desvio.itsa4, Media.itsa4 + 2.5 * Desvio.itsa4, length = 60)
+y <- dnorm(x, Media.itsa4, Desvio.itsa4)
+plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo mais amplo")
 
-    mtext("BRFS3", outer = TRUE, cex = 1.5)
+mtext("ITSA4", outer = TRUE, cex = 1.5)
 
-    ## IBOV (mantido)
-    Media.ibov
-    Desvio.ibov
+## RENT3
+Media.rent3
+Desvio.rent3
 
-    par(mfrow = c(2, 2), oma = c(0, 0, 3, 0))
+par(mfrow = c(2, 2), oma = c(0, 0, 3, 0))
 
-    x <- seq(Media.ibov - Desvio.ibov, Media.ibov + Desvio.ibov, length = 60)
-    y <- dnorm(x, Media.ibov, Desvio.ibov)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 1 DP")
+x <- seq(Media.rent3 - Desvio.rent3, Media.rent3 + Desvio.rent3, length = 60)
+y <- dnorm(x, Media.rent3, Desvio.rent3)
+plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 1 DP")
 
-    x <- seq(Media.ibov - 2 * Desvio.ibov, Media.ibov + 2 * Desvio.ibov, length = 60)
-    y <- dnorm(x, Media.ibov, Desvio.ibov)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 2 DP")
+x <- seq(Media.rent3 - 2 * Desvio.rent3, Media.rent3 + 2 * Desvio.rent3, length = 60)
+y <- dnorm(x, Media.rent3, Desvio.rent3)
+plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 2 DP")
 
-    x <- seq(Media.ibov - 3 * Desvio.ibov, Media.ibov + 3 * Desvio.ibov, length = 60)
-    y <- dnorm(x, Media.ibov, Desvio.ibov)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 3 DP")
+x <- seq(Media.rent3 - 3 * Desvio.rent3, Media.rent3 + 3 * Desvio.rent3, length = 60)
+y <- dnorm(x, Media.rent3, Desvio.rent3)
+plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 3 DP")
 
-    x <- seq(Media.ibov - 2.5 * Desvio.ibov, Media.ibov + 2.5 * Desvio.ibov, length = 60)
-    y <- dnorm(x, Media.ibov, Desvio.ibov)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo mais amplo")
+x <- seq(Media.rent3 - 2.5 * Desvio.rent3, Media.rent3 + 2.5 * Desvio.rent3, length = 60)
+y <- dnorm(x, Media.rent3, Desvio.rent3)
+plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo mais amplo")
 
-    mtext("IBOV", outer = TRUE, cex = 1.5)
+mtext("RENT3", outer = TRUE, cex = 1.5)
+
+## BRFS3
+Media.brfs3
+Desvio.brfs3
+
+par(mfrow = c(2, 2), oma = c(0, 0, 3, 0))
+
+x <- seq(Media.brfs3 - Desvio.brfs3, Media.brfs3 + Desvio.brfs3, length = 60)
+y <- dnorm(x, Media.brfs3, Desvio.brfs3)
+plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 1 DP")
+
+x <- seq(Media.brfs3 - 2 * Desvio.brfs3, Media.brfs3 + 2 * Desvio.brfs3, length = 60)
+y <- dnorm(x, Media.brfs3, Desvio.brfs3)
+plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 2 DP")
+
+x <- seq(Media.brfs3 - 3 * Desvio.brfs3, Media.brfs3 + 3 * Desvio.brfs3, length = 60)
+y <- dnorm(x, Media.brfs3, Desvio.brfs3)
+plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 3 DP")
+
+x <- seq(Media.brfs3 - 2.5 * Desvio.brfs3, Media.brfs3 + 2.5 * Desvio.brfs3, length = 60)
+y <- dnorm(x, Media.brfs3, Desvio.brfs3)
+plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo mais amplo")
+
+mtext("BRFS3", outer = TRUE, cex = 1.5)
+
+## IBOV (mantido)
+Media.ibov
+Desvio.ibov
+
+par(mfrow = c(2, 2), oma = c(0, 0, 3, 0))
+
+x <- seq(Media.ibov - Desvio.ibov, Media.ibov + Desvio.ibov, length = 60)
+y <- dnorm(x, Media.ibov, Desvio.ibov)
+plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 1 DP")
+
+x <- seq(Media.ibov - 2 * Desvio.ibov, Media.ibov + 2 * Desvio.ibov, length = 60)
+y <- dnorm(x, Media.ibov, Desvio.ibov)
+plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 2 DP")
+
+x <- seq(Media.ibov - 3 * Desvio.ibov, Media.ibov + 3 * Desvio.ibov, length = 60)
+y <- dnorm(x, Media.ibov, Desvio.ibov)
+plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 3 DP")
+
+x <- seq(Media.ibov - 2.5 * Desvio.ibov, Media.ibov + 2.5 * Desvio.ibov, length = 60)
+y <- dnorm(x, Media.ibov, Desvio.ibov)
+plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo mais amplo")
+
+mtext("IBOV", outer = TRUE, cex = 1.5)
 
 
-    ```
+```
 
 ## Probabilidades dentro dos intervalos da média
 
@@ -710,20 +706,20 @@ pnorm(Media.ibov + 3 * Desvio.ibov, Media.ibov, Desvio.ibov) -
 
 ```
 
-## Conclusão: 
+## Conclusão:
 
 ::: {style="text-align: justify"}
 A análise dos ativos no período considerado evidencia um comportamento relativamente consistente, com retornos estáveis e perfil de risco que pode ser interessante para investidores com perfil averso ao risco. A avaliação da volatilidade anualizada permitiu organizar os ativos do menos arriscado ao mais arriscado, resultando no seguinte ranking:
 
-1.   **ELET6**
+1.  **ELET6**
 
-2.   ITSA4
+2.  ITSA4
 
-3.   RENT3
+3.  RENT3
 
-4.   BRFS3
+4.  BRFS3
 
-5.   LWSA3
+5.  LWSA3
 
 O destaque vai para a **ELET6**, que apresentou a menor volatilidade entre os ativos analisados, demonstrando maior previsibilidade e menor exposição a oscilações bruscas de mercado. É importante observar, no entanto, que a média dos retornos logarítmicos da ELET6 foi negativa (-0,0188%), indicando que, embora seja o ativo mais seguro, ele não proporcionou retorno positivo no período considerado.
 
@@ -1055,15 +1051,15 @@ points(0.0237,  0.0074, pch = 19, cex = 1.5, col = "red")
 ::: {style="text-align: justify"}
 O princípio da otimização de carteiras segundo Markowitz baseia-se na ideia de que os investidores buscam maximizar o retorno esperado de seus investimentos, ao mesmo tempo em que minimizam o risco associado. A tarefa de otimizar uma carteira pode ser descrita de duas formas complementares:
 
-1.   **Maximização do retorno esperado**, sujeita a um nível específico de risco definido pelo investidor;
+1.  **Maximização do retorno esperado**, sujeita a um nível específico de risco definido pelo investidor;
 
-2.   **Minimização do risco (variância)**, sujeita a um nível de retorno desejado.
+2.  **Minimização do risco (variância)**, sujeita a um nível de retorno desejado.
 
 em que:
 
--    a variância da carteira, representando o risco total;
+-   a variância da carteira, representando o risco total;
 
--    o retorno esperado da carteira;
+-   o retorno esperado da carteira;
 
 -   os resultados são, respectivamente, os níveis de risco e retorno que o investidor deseja atingir.
 
@@ -1109,7 +1105,6 @@ points(0.0237,0.0074,pch=19, cex=1.5,col="red")
 ### Carteira com Mínima Variância
 
 ::: {style="text-align: justify"}
-
 -   O **retorno esperado médio da carteira** é de aproximadamente **0,685% ao período analisado**, com um **risco medido pelo desvio padrão (Sigma) de 3,31%**. A carteira apresenta também indicadores de risco mais extremos, como **VaR de 5,46%** e **CVaR de 5,55%**, indicando que, em cenários adversos, as perdas podem ser relevantes.
 :::
 
@@ -1202,7 +1197,7 @@ tangencyLines(fronteira, col="green", pch=19)
 GraficoPizzaCustom<-weightsPie(CarteiraCustomizada);GraficoPizzaCustom
 ```
 
-#### Carteira com ativo livre de risco 
+#### Carteira com ativo livre de risco
 
 ::: {style="text-align: justify"}
 -   A carteira otimizada com retorno-alvo de 0,1% exemplifica perfeitamente o princípio de **minimização da variância sujeita a um nível de retorno desejado**. Esta composição demonstra como a otimização matemática identifica combinações eficientes mesmo para retornos relativamente baixos.
@@ -1416,15 +1411,15 @@ write.table(CarteiraBETA, file = "BetaCarteira.txt", row.names = FALSE)
 ::: {style="text-align: justify"}
 O código implementa, de forma prática:
 
-1.   Obtenção de dados de ativos e índices.
+1.  Obtenção de dados de ativos e índices.
 
-2.   Cálculo de **retornos logarítmicos**.
+2.  Cálculo de **retornos logarítmicos**.
 
-3.   Cálculo de **excess returns** em relação à taxa livre de risco.
+3.  Cálculo de **excess returns** em relação à taxa livre de risco.
 
-4.   Estimativa de **Beta** via regressão linear simples.
+4.  Estimativa de **Beta** via regressão linear simples.
 
-5.   Aplicação prática do **CAPM** para análise de risco e retorno.
+5.  Aplicação prática do **CAPM** para análise de risco e retorno.
 :::
 
 ```{r}
@@ -1475,7 +1470,7 @@ Betabrfs3=lm(Rbrfs3~Ribov[-1]);Betabrfs3
 ### Analisando o ativo LWSA3:
 
 ::: {style="text-align: justify"}
--    Extração de resíduos: A forma do histograma mostra resíduos próximos da normal, mas com pequenas diferenças nas caudas. Isso significa que os choques extremos são raros, mas ainda possíveis.
+-   Extração de resíduos: A forma do histograma mostra resíduos próximos da normal, mas com pequenas diferenças nas caudas. Isso significa que os choques extremos são raros, mas ainda possíveis.
 
 <!-- -->
 
