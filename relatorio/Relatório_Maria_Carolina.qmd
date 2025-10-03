@@ -1541,7 +1541,7 @@ library(rbcb)
 }
 ```
 
-## Análise de Curto Prazo: 
+## Análise de Curto Prazo:
 
 ### Gráfico de Comparação dos Betas:
 
@@ -1577,7 +1577,7 @@ text(x = as.vector(bpb), y = BETA.Mercado,
      col = "black",cex=0.8)
 ```
 
-## Indicadores de Performance Curto Prazo: 
+## Indicadores de Performance Curto Prazo:
 
 ::: {style="text-align: justify"}
 ## Jesen:
@@ -1702,7 +1702,7 @@ ggplot(ativos_final, aes(x = reorder(Ativo, Ranking), y = -Ranking, fill = Ativo
 
 :::: {style="text-align: justify"}
 ::: {style="text-align: justify"}
-## Conclusão do resultado no Curto Prazo: 
+## Conclusão do resultado no Curto Prazo:
 
 Entre os ativos analisados, **LWSA3 se destacou** como o ativo de melhor desempenho relativo. Apesar de apresentar Beta elevado (alta sensibilidade ao mercado e, portanto, maior risco), conseguiu gerar Alpha positivo expressivo (+4,22%), entregando retorno acima do esperado e superando os demais. Além disso, mesmo com Treynor e Sharpe negativos (como todos os ativos do conjunto), foi o menos ruim, mostrando-se a opção mais eficiente em termos de risco-retorno dentro dessa carteira.
 
@@ -2051,7 +2051,7 @@ Betarent3=lm(Rrent3~Ribov[-1]);Betarent3
 Betabrfs3=lm(Rbrfs3~Ribov[-1]);Betabrfs3
 ```
 
-## Beta mercado 
+## Beta mercado
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 library(yfR)
