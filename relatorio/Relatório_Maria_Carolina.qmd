@@ -1541,13 +1541,11 @@ library(rbcb)
 }
 ```
 
-## Análise de Curto Prazo: 
+## Análise de Curto Prazo:
 
 ### Gráfico de Comparação dos Betas:
 
 ::: {style="text-align: justify"}
--   Análise Prática dos Betas da Carteira:
-
 -   Ativos com Beta Elevado (β \> 1):
 
     -   LWSA3 (β = 1,68): Apresenta sensibilidade acentuada aos movimentos do mercado, com volatilidade aproximadamente 68% superior ao Ibovespa. Característica típica de ações de crescimento e setores tecnológicos.
@@ -1571,13 +1569,13 @@ names=c("lwsa3", "elet6", "itsa4", "rent3", "brfs3")
 BETA.Mercado=c(Betalwsa3$coef[2],Betaelet6$coef[2],Betaitsa4$coef[2],Betarent3$coef[2],Betabrfs3$coef[2]);names;BETA.Mercado
 
 
-bpb<-barplot(BETA.Mercado, main="Gráf.4:Cálculo do Beta-Mercado da Carteira Sugerida (60 dias)", ylim=c(0,3.0),names.arg=names, ylab="Percentual %", cex.names=1, col="pink")
+bpb<-barplot(BETA.Mercado, main="Cálculo do Beta-Mercado da Carteira Sugerida (60 dias)", ylim=c(0,3.0),names.arg=names, ylab="Percentual %", cex.names=1, col="pink")
 text(x = as.vector(bpb), y = BETA.Mercado, 
      label =  round(BETA.Mercado, 2), pos = 3, 
      col = "black",cex=0.8)
 ```
 
-## Indicadores de Performance Curto Prazo: 
+## Indicadores de Performance Curto Prazo:
 
 ::: {style="text-align: justify"}
 ## Jesen:
@@ -1664,45 +1662,9 @@ text(x = as.vector(bpSharpe), y = SHARPE,
 
 ```
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
-# --- Pacotes necessários ---
-library(ggplot2)
-
-# --- Dados dos ativos ---
-ativos <- data.frame(
-  Ativo   = c("LWSA3", "RENT3", "ELET6", "ITSA4", "BRFS3"),
-  Beta    = c(1.68, 1.16, 0.74, 0.80, 0.81),
-  Alpha   = c(0.0422, 0.0097, -0.0148, -0.0088, -0.0105),
-  Treynor = c(-2.78, -4.45, -7.31, -6.38, -6.58),
-  Sharpe  = c(-1.39, -2.12, -4.35, -4.11, -2.14)
-)
-
-# --- Ranking ---
-ativos$Rank_Alpha   <- rank(-ativos$Alpha, ties.method = "first")
-ativos$Rank_Treynor <- rank(-ativos$Treynor, ties.method = "first")
-ativos$Rank_Sharpe  <- rank(-ativos$Sharpe, ties.method = "first")
-
-ativos$Score_Final <- ativos$Rank_Alpha + ativos$Rank_Treynor + ativos$Rank_Sharpe
-ativos$Ranking     <- rank(ativos$Score_Final, ties.method = "first")
-
-ativos_final <- ativos[order(ativos$Ranking), ]
-
-# --- Mostrar tabela final ---
-print(ativos_final)
-
-# --- Gráfico com ggplot2 ---
-ggplot(ativos_final, aes(x = reorder(Ativo, Ranking), y = -Ranking, fill = Ativo)) +
-  geom_col(width = 0.6, show.legend = FALSE) +
-  geom_text(aes(label = Ranking), vjust = -0.5, size = 5) +
-  labs(title = "Ranking de Desempenho dos Ativos",
-       x = "Ativo", y = "Posição no Ranking (1 = Melhor)") +
-  theme_minimal()
-
-```
-
 :::: {style="text-align: justify"}
 ::: {style="text-align: justify"}
-## Conclusão do resultado no Curto Prazo: 
+## Conclusão do resultado no Curto Prazo:
 
 Entre os ativos analisados, **LWSA3 se destacou** como o ativo de melhor desempenho relativo. Apesar de apresentar Beta elevado (alta sensibilidade ao mercado e, portanto, maior risco), conseguiu gerar Alpha positivo expressivo (+4,22%), entregando retorno acima do esperado e superando os demais. Além disso, mesmo com Treynor e Sharpe negativos (como todos os ativos do conjunto), foi o menos ruim, mostrando-se a opção mais eficiente em termos de risco-retorno dentro dessa carteira.
 
@@ -1728,7 +1690,7 @@ Por outro lado, **ELET6 apresentou o pior desempenho**. Embora tenha Beta defens
 
 <div>
 
-Na analise de Médio prazo estabeleci a janela temporal de 01/04/2025 até 11/08/2025
+Na análise de médio prazo, foi definida a janela temporal entre **01/04/2025 e 11/08/2025**. A escolha desse período busca capturar um horizonte intermediário, suficiente para refletir as condições recentes do mercado sem ser excessivamente curto (o que poderia gerar distorções por ruídos de curto prazo), nem muito longo (o que diluiria os efeitos das oscilações mais atuais).
 
 </div>
 
@@ -1853,6 +1815,25 @@ Betabrfs3=lm(Rbrfs3~Ribov[-1]);Betabrfs3
 ```
 
 ::: {style="text-align: justify"}
+A análise do beta de mercado da carteira mostra diferenças relevantes no risco sistemático de cada ativo em relação ao Ibovespa.
+
+O ativo RENT3 apresenta o maior beta (1,29), indicando que tende a ser mais volátil que o mercado, amplificando tanto ganhos quanto perdas. Já a ação LWSA3 (1,17) também apresenta um risco acima da média, mas ligeiramente menor que RENT3.
+
+Por outro lado, BRFS3 apresenta o menor beta (0,62), mostrando-se mais defensiva e menos sensível às oscilações do mercado. ELET6 (0,91) e ITSA4 (0,95) ficam próximos de 1, o que significa que acompanham de forma relativamente equilibrada os movimentos do índice, com risco próximo ao do mercado.
+
+De forma geral, a carteira equilibra ativos mais defensivos (BRFS3) com ativos mais agressivos (RENT3 e LWSA3), além de empresas de risco moderado (ELET6 e ITSA4). Isso pode contribuir para diversificação e equilíbrio no perfil de risco da carteira sugerida.
+
+**Ranking dos ativos por Beta (90 dias):**
+
+1.   **BRFS3 – 0,62** (mais defensiva, menor sensibilidade ao mercado)
+
+2.   **ELET6 – 0,91**
+
+3.   **ITSA4 – 0,95**
+
+4.  **LWSA3 – 1,17**
+
+5.   **RENT3 – 1,29** (mais arriscada, maior sensibilidade ao mercado)
 :::
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
@@ -1874,10 +1855,41 @@ text(x = as.vector(bpb), y = BETA.Mercado,
 ## Indicadores de Performance de Médio Prazo:
 
 ::: {style="text-align: justify"}
+Na análise de médio prazo (01/04/2025 a 11/08/2025), observa-se que:
+
+-    **LWSA3** foi o destaque positivo. Apesar do Beta acima de 1 (maior risco sistemático), apresentou **Alpha positivo (Jensen)** e foi o ativo com o **melhor Sharpe** relativo, entregando desempenho mais eficiente em termos de risco-retorno.
+
+-   **RENT3** também se destacou, com o **maior Alpha (0,0148)**, além de resultados relativamente melhores nos índices Treynor e Sharpe, posicionando-se como o segundo melhor ativo.
+
+    **BRFS3** mostrou-se fraca, com o pior resultado no **Jensen (-0,0214)** e no **Treynor (-8,85)**, além de Sharpe negativo, embora ligeiramente melhor que ITSA4 e ELET6.
+
+-    **ITSA4** apresentou desempenho ruim, com Alpha negativo, Sharpe (-4,21) e Treynor também negativo, não entregando retorno ajustado ao risco.
+
+-    **ELET6**, apesar do Beta defensivo, foi a pior escolha geral: destruiu valor em todos os indicadores e não compensou o risco, mesmo sendo teoricamente menos exposta às oscilações do mercado.
+
+**Ranking de desempenho (melhor → pior):**
+
+1.   **LWSA3** → melhor relação risco-retorno relativa, Alpha positivo e destaque no Sharpe.
+
+2.   **RENT3** → maior Alpha, bom desempenho relativo em todos os indicadores.
+
+3.   **BRFS3** → fraco, mas menos destrutivo que ITSA4 e ELET6 em alguns índices.
+
+4.   **ITSA4** → Alpha negativo e fraca relação risco-retorno.
+
+5.   **ELET6** → pior desempenho geral, destruiu valor em todos os indicadores.
 :::
 
 ::: {style="text-align: justify"}
 ## Jesen:
+
+O indicador de Jensen (Alpha de Jensen) mede a geração de valor acima ou abaixo do retorno esperado pelo modelo CAPM.
+
+-    **RENT3 (0,0148)** e **LWSA3 (0,013)** foram os únicos ativos a gerar Alpha positivo, entregando retorno acima do esperado e se destacando como os melhores nesse critério.
+
+-   **ITSA4 (-0,0014)** e **ELET6 (-0,0039)** tiveram desempenho levemente negativo, não compensando o risco sistemático assumido.
+
+-    **BRFS3 (-0,0214)** foi o pior ativo nesse indicador, destruindo valor e ficando muito abaixo do retorno esperado.
 :::
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
@@ -1910,6 +1922,15 @@ text(x = as.vector(bpTreynor), y = TREYNOR,
 ```
 
 ::: {style="text-align: justify"}
+O índice de Treynor avalia a eficiência do ativo em gerar retorno em relação ao risco sistemático (Beta).
+
+-    Todos os ativos apresentaram valores **negativos**, indicando que nenhum compensou adequadamente o risco de mercado.
+
+-    **RENT3 (-4,23)** e **LWSA3 (-4,27)** foram os “menos ruins”, sugerindo que, apesar de Beta elevado, destruíram menos valor que os demais.
+
+-    **ELET6 (-5,81)** e **ITSA4 (-5,53)** tiveram performance inferior, não entregando retorno ajustado ao risco sistemático.
+
+-    **BRFS3 (-8,85)** foi o pior ativo, mostrando grande destruição de valor frente ao risco de mercado.
 :::
 
 ## Sharpe:
@@ -1930,9 +1951,20 @@ text(x = as.vector(bpSharpe), y = SHARPE,
 ```
 
 ::: {style="text-align: justify"}
+O índice de Sharpe avalia a relação risco-retorno considerando a volatilidade total do ativo.
+
+-    **LWSA3 (-1,54)** apresentou o melhor resultado relativo, sendo o ativo com a melhor relação risco-retorno, mesmo negativo.
+
+-   **RENT3 (-2,35)** e **BRFS3 (-2,05)** ficaram em posição intermediária, mas ainda com má relação risco-retorno.
+
+-    **ELET6 (-3,37)** e **ITSA4 (-4,21)** foram os piores, indicando alto risco sem retorno proporcional.
 :::
 
 ## Análise de Longo Prazo:
+
+::: {style="text-align: justify"}
+Na análise de longo prazo, foi estabelecida a janela temporal de **02/09/2023 a 30/09/2025**. Essa escolha se justifica por permitir a observação de um horizonte mais amplo, contemplando **dois anos de dados de mercado**. Ao adotar esse intervalo, é possível suavizar ruídos de curto prazo e capturar o comportamento dos ativos em diferentes ciclos do mercado, incluindo momentos de valorização e queda. Isso garante uma avaliação mais robusta sobre o desempenho relativo dos ativos, principalmente em métricas de risco e retorno como Jensen, Treynor e Sharpe.
+:::
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 library(GetBCBData)
@@ -2051,7 +2083,33 @@ Betarent3=lm(Rrent3~Ribov[-1]);Betarent3
 Betabrfs3=lm(Rbrfs3~Ribov[-1]);Betabrfs3
 ```
 
-## Beta mercado 
+## Beta mercado
+
+::: {style="text-align: justify"}
+No horizonte de longo prazo, observa-se que todos os ativos, com exceção de **ELET6**, apresentaram Beta acima de 1, ou seja, tendem a ser mais voláteis que o mercado.
+
+-   **LWSA3 (1,48)** é o ativo mais arriscado, com alta sensibilidade às oscilações do Ibovespa, ampliando tanto ganhos quanto perdas.
+
+-   **RENT3 (1,37)** também se mostra bastante exposta ao risco de mercado, embora um pouco menos que LWSA3.
+
+-   **ITSA4 (1,04)** e **BRFS3 (1,04)** ficaram muito próximos de 1, acompanhando de forma quase proporcional os movimentos do índice.
+
+-   **ELET6 (0,99)** foi o único ativo com Beta ligeiramente abaixo de 1, posicionando-se como o mais defensivo dentro do conjunto, embora ainda muito próximo do risco médio do mercado.
+
+Portanto, no longo prazo a carteira apresenta predominância de ativos com risco elevado (LWSA3 e RENT3), enquanto os demais (ITSA4, BRFS3 e ELET6) se mantêm alinhados ao mercado, sem grandes características defensivas.
+
+**Ranking dos ativos por Beta (longo prazo):**
+
+1.   **ELET6 – 0,99** (mais defensiva, próxima ao mercado)
+
+2.   **ITSA4 – 1,04**
+
+3.  **BRFS3 – 1,04**
+
+4.  **RENT3 – 1,37**
+
+5.  **LWSA3 – 1,48** (mais arriscada)
+:::
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 library(yfR)
@@ -2071,17 +2129,41 @@ text(x = as.vector(bpb), y = BETA.Mercado,
 
 ## Indicadores de Performance:
 
+::: {style="text-align: justify"}
+**Conclusão do resultado no Longo Prazo:**\
+Entre os ativos analisados, **LWSA3** foi o destaque, apresentando o melhor conjunto de resultados: Alpha positivo relevante, Treynor menos negativo e Sharpe menos ruim, o que reforça sua eficiência relativa, apesar do Beta elevado (alta sensibilidade ao mercado).
+
+**RENT3** também mostrou desempenho sólido, com Alpha positivo e índices de risco melhores que a média, embora ainda negativos.
+
+Na parte intermediária, **BRFS3** conseguiu manter alpha positivo, mas sua relação risco-retorno não se destacou.
+
+Já **ITSA4** e principalmente **ELET6** foram os piores ativos do período, ambos destruindo valor em Sharpe e Treynor, com ELET6 sendo o destaque negativo, apesar de seu perfil mais defensivo pelo Beta.
+
+**Ranking de desempenho (melhor → pior):**
+
+1.  **LWSA3** → melhor desempenho geral (Alpha alto, menor piora nos indicadores de risco).
+
+2.  **RENT3** → desempenho positivo, Alpha consistente, índices moderados.
+
+3.  **BRFS3** → desempenho intermediário, Alpha modesto, relação risco-retorno fraca.
+
+4.  **ITSA4** → fraco desempenho, Alpha baixo e Sharpe muito ruim.
+
+5.  **ELET6** → pior ativo, Alpha neutro e destruição de valor em Sharpe e Treynor.
+:::
+
 ## Jesen:
 
--   ::: {style="text-align: justify"}
-    -   O **Alpha de Jensen** mede se um ativo **entregou um retorno acima ou abaixo do esperado**, considerando o risco assumido (β em relação ao mercado).
+::: {style="text-align: justify"}
+**Jensen (Alpha):**\
+Avalia se o ativo entregou retorno acima (ou abaixo) do esperado pelo seu risco sistemático.
 
-    -   lwsa3 = 0.0422 (4,22%) → ótimo desempenho, entregou retorno acima do que o CAPM esperava.
+-   **LWSA3 (0,0203)** e **RENT3 (0,0155)** apresentaram os melhores alphas, mostrando retorno acima do esperado pelo CAPM.
 
-    -   rent3 = 0.0097 (0,97%) → levemente positivo, também agregou valor, mas em menor intensidade.
+-   **ITSA4 (0,0025)** e **BRFS3 (0,0028)** tiveram resultados positivos, mas modestos.
 
-    -   elet6 (-0,0148), itsa4 (-0,0088), brfs3 (-0,0105) → retornos negativos ajustados ao risco, ou seja, esses ativos não compensaram o risco que assumiram.
-    :::
+-   **ELET6 (0,0001)** praticamente zerou, indicando desempenho neutro.
+:::
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 {
@@ -2097,21 +2179,18 @@ text(x = as.vector(bpJensen), y = JENSEN,
 
 ## Treynor:
 
--   ::: {style="text-align: justify"}
-    -   Mede o retorno excedente por unidade de risco sistemático (β).
+<div>
 
-    -   Diferente do Sharpe, que usa o risco total (desvio padrão), o Treynor considera apenas o risco de mercado (sistemático), que não pode ser diversificado.
+**Treynor:**\
+Avalia o retorno em excesso obtido por unidade de risco sistemático (Beta).
 
-    -   Todos os ativos apresentaram valores negativos → ou seja, nenhum ativo entregou retorno que compensasse o risco de mercado assumido.
+-   **LWSA3 (-3,16)** e **RENT3 (-3,40)** foram os menos negativos, ou seja, entregaram a “melhor” relação risco-retorno relativo.
 
-    -   lwsa3 (-2.78) foi o menos negativo, o que significa que, dentro do conjunto, foi o ativo com melhor desempenho relativo ajustado ao risco.
+-   **ITSA4 (-4,29)** e **BRFS3 (-4,26)** ficaram no meio da distribuição, mas ainda ruins.
 
-    -   elet6 (-7.31) foi o pior, indicando que esse ativo destruiu mais valor em relação ao risco sistemático.
+-   **ELET6 (-4,52)** apresentou o pior desempenho, sem compensar o risco assumido.
 
-    -   itsa4 (-6.38) e brfs3 (-6.58) também tiveram desempenho bastante ruim.
-
-    -   rent3 (-4.45) ficou em situação intermediária.
-    :::
+</div>
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 {
@@ -2130,15 +2209,16 @@ text(x = as.vector(bpTreynor), y = TREYNOR,
 
 ## Sharpe:
 
--   ::: {style="text-align: justify"}
-    -   Avalia se os retornos de um ativo compensam a volatilidade que ele apresenta.
+::: {style="text-align: justify"}
+**Sharpe:**\
+Avalia se os retornos compensam a volatilidade total.
 
-    -   lwsa3 (-1.39) foi o “menos ruim”, entregando a melhor relação risco-retorno entre os ativos.
+-   **LWSA3 (-1,52)** foi o menos ruim, oferecendo a melhor relação risco-retorno relativa.
 
-    -   elet6 (-4.35) e itsa4 (-4.11) foram os piores, indicando alto risco sem retorno proporcional.
+-   **BRFS3 (-1,61)** e **RENT3 (-1,87)** ficaram em posição intermediária, mas ainda negativos.
 
-    -   rent3 (-2.12) e brfs3 (-2.14) ficaram em posição intermediária, mas ainda negativos.
-    :::
+-   **ELET6 (-3,03)** e **ITSA4 (-3,38)** tiveram os piores resultados, indicando alto risco sem retorno proporcional.
+:::
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 {
@@ -2155,92 +2235,6 @@ text(x = as.vector(bpSharpe), y = SHARPE,
 }
 ```
 
-## Conclusão sobre o resultado dos índices:
-
-```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
-# --- Pacotes necessários ---
-library(ggplot2)
-
-# --- Dados dos ativos ---
-ativos <- data.frame(
-  Ativo   = c("LWSA3", "RENT3", "ELET6", "ITSA4", "BRFS3"),
-  Beta    = c(1.68, 1.16, 0.74, 0.80, 0.81),
-  Alpha   = c(0.0422, 0.0097, -0.0148, -0.0088, -0.0105),
-  Treynor = c(-2.78, -4.45, -7.31, -6.38, -6.58),
-  Sharpe  = c(-1.39, -2.12, -4.35, -4.11, -2.14)
-)
-
-# --- Ranking ---
-ativos$Rank_Alpha   <- rank(-ativos$Alpha, ties.method = "first")
-ativos$Rank_Treynor <- rank(-ativos$Treynor, ties.method = "first")
-ativos$Rank_Sharpe  <- rank(-ativos$Sharpe, ties.method = "first")
-
-ativos$Score_Final <- ativos$Rank_Alpha + ativos$Rank_Treynor + ativos$Rank_Sharpe
-ativos$Ranking     <- rank(ativos$Score_Final, ties.method = "first")
-
-ativos_final <- ativos[order(ativos$Ranking), ]
-
-# --- Mostrar tabela final ---
-print(ativos_final)
-
-# --- Gráfico com ggplot2 ---
-ggplot(ativos_final, aes(x = reorder(Ativo, Ranking), y = -Ranking, fill = Ativo)) +
-  geom_col(width = 0.6, show.legend = FALSE) +
-  geom_text(aes(label = Ranking), vjust = -0.5, size = 5) +
-  labs(title = "Ranking de Desempenho dos Ativos",
-       x = "Ativo", y = "Posição no Ranking (1 = Melhor)") +
-  theme_minimal()
-
-```
-
-::: {style="text-align: justify"}
-Entre os ativos analisados, **LWSA3 se destacou** como o ativo de melhor desempenho relativo. Apesar de apresentar Beta elevado (alta sensibilidade ao mercado e, portanto, maior risco), conseguiu gerar Alpha positivo expressivo (+4,22%), entregando retorno acima do esperado e superando os demais. Além disso, mesmo com Treynor e Sharpe negativos (como todos os ativos do conjunto), foi o menos ruim, mostrando-se a opção mais eficiente em termos de risco-retorno dentro dessa carteira.
-
-Por outro lado, **ELET6 apresentou o pior desempenho**. Embora tenha Beta defensivo (baixo risco sistemático esperado), destruiu valor em todos os indicadores: Alpha negativo, pior resultado no Treynor (-7,31) e um dos piores Sharpe (-4,35). Isso mostra que o ativo não compensou o risco assumido e falhou em entregar retornos adequados, mesmo sendo menos exposto à volatilidade do mercado.
-
-**RENT3 teve performance intermediária**, com Alpha positivo, mas baixo (+0,97%), além de resultados ainda negativos em Sharpe e Treynor, porém menos graves que ITSA4, BRFS3 e ELET6. ITSA4 e BRFS3 mostraram-se ativos sem retorno ajustado ao risco, ambos destruindo valor, ainda que com volatilidade mais controlada.
-
-### Ranking de Desempenho (melhor → pior):
-
-1.  **LWSA3** → Melhor desempenho geral (alto Alpha, melhor relação risco-retorno relativa).
-
-2.  **RENT3** → Desempenho moderado, Alpha positivo mas baixo, intermediária nos índices de risco.
-
-3.  **BRFS3** → Desempenho fraco, Alpha negativo e Sharpe ruim, mas ainda acima de ITSA4 e ELET6.
-
-4.  **ITSA4** → Desempenho fraco, Alpha negativo e Treynor ruim, mas não tão destrutivo quanto ELET6.
-
-5.  **ELET6** → Pior desempenho, destruiu valor em todos os indicadores, mesmo sendo defensivo.
-:::
-
-## Análise de Curto Prazo:
-
-::: {style="text-align: justify"}
-:::
-
-```{r}
-
-```
-
-## Análise de Médio Prazo:
-
-::: {style="text-align: justify"}
-Analisar todas as medidas anteriores , com diferença apenas das datas
-:::
-
-```{r}
-
-```
-
-## Análise de Longo Prazo:
-
-::: {style="text-align: justify"}
-:::
-
-```{r}
-
-```
-
 # Referências Bibliográficas
 
 -   Alexandre Assaf Neto. *Mercado Financeiro*. Atlas, 2022.
@@ -2250,5 +2244,3 @@ Analisar todas as medidas anteriores , com diferença apenas das datas
 -   Yahoo Finance (https://finance.yahoo.com/) – Base de dados utilizada.
 
 ------------------------------------------------------------------------
-
-## 
