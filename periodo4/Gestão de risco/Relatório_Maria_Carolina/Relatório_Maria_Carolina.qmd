@@ -45,7 +45,12 @@ Nesse sentido, a análise dos ativos busca identificar aqueles que, dentro da te
     date()
 
     # Diretório de trabalho
+<<<<<<< Updated upstream
     setwd("")
+=======
+    setwd("C:/Users/PC/Desktop/Projetos/CDN_UFPB/periodo4/Gestão de risco/Relatório_Maria_Carolina")
+
+>>>>>>> Stashed changes
 
     # Carregamento do pacote
     library(tseries)
