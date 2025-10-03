@@ -43,7 +43,7 @@ Nesse sentido, a análise dos ativos busca identificar aqueles que, dentro da te
     date()
 
     # Diretório de trabalho
-    setwd("")
+    # setwd("")
 
     # Carregamento do pacote
     library(tseries)
@@ -122,7 +122,7 @@ Essa metodologia dialoga com a Teoria de Dow, ao considerar que os preços se mo
 Na prática, o objetivo é fornecer uma visualização intuitiva dos pontos críticos do ativo, permitindo que o investidor trace hipóteses sobre zonas de compra (próximas ao suporte) e de venda (próximas à resistência), sempre levando em consideração a relação risco-retorno associada.
 :::
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 library(tseries)
 library(xts)
 library(zoo)
@@ -156,7 +156,7 @@ O ativo apresenta uma **tendência indefinida**, oscilando em um canal lateral, 
 Conclusão: o movimento lateral reflete **incerteza dos investidores**, indicando que o papel pode permanecer congestionado até a confirmação de rompimento. Para investidores avessos ao risco, a atratividade é baixa, já que o retorno potencial é limitado e o risco de rompimento desfavorável existe.
 :::
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 plot_min_max(lwsa3, "LWSA3")
 ```
 
@@ -164,7 +164,7 @@ plot_min_max(lwsa3, "LWSA3")
 Pelo ponto de vista gráfico, a ação apresenta uma **tendência de alta consistente**, apoiada por sucessivos topos e fundos ascendentes. O suporte firme se encontra na região de **R\$ 44,00**, enquanto a resistência imediata está em **R\$ 48,50** (dados de 27/06/2025). Conclusão: a configuração atrai investidores focados em **retorno total (valorização + dividendos)**, pois o ativo mantém força compradora. Contudo, a proximidade da resistência exige atenção a sinais de reversão ou realização de lucros.
 :::
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 plot_min_max(elet6, "ELET6")
 ```
 
@@ -173,7 +173,7 @@ Graficamente, a ação opera em uma **tendência de alta moderada**, mas de meno
 Conclusão: o movimento sugere um ativo **estável e com baixo risco relativo**, adequado a investidores com perfil conservador. O potencial de valorização é limitado, mas a probabilidade de manter suporte torna a relação risco-retorno equilibrada.
 :::
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 plot_min_max(itsa4, "ITSA4")
 
 ```
@@ -183,7 +183,7 @@ Pela análise técnica, o papel apresenta um movimento de **consolidação após
 Conclusão: a ação indica **força acumulada** em suporte, sugerindo possível continuidade da alta em caso de rompimento da resistência. Para investidores moderados e agressivos, o ativo apresenta atratividade, desde que observada a relação risco-retorno em caso de correção.
 :::
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 plot_min_max(rent3, "RENT3")
 ```
 
@@ -191,7 +191,7 @@ plot_min_max(rent3, "RENT3")
 Graficamente, o ativo se encontra em **momento de transição**, refletindo indecisão entre compradores e vendedores. O suporte imediato está em **R\$ 20,00**, enquanto a resistência se posiciona em **R\$ 21,80** (dados de 27/06/2025). Conclusão: a ação aguarda um **catalisador de mercado** (como divulgação de resultados ou fatores macroeconômicos) para definir a direção. O cenário atual não favorece movimentos expressivos de curto prazo, sendo mais indicado a investidores pacientes ou com perfil de observação.
 :::
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 plot_min_max(brfs3, "BRFS3")
 ```
 
@@ -209,7 +209,7 @@ plot_min_max(brfs3, "BRFS3")
 -   Destaque absoluto, a LWSA3 subiu **85,54% (R\$1,99)** em **119 dias**, com volume de **R\$797,36 milhões**. Esse crescimento explosivo, quase o dobro dos demais ativos, sugere um **momento excepcional**, possivelmente impulsionado por fatores setoriais ou notícias específicas. Quem comprou e segurou obteve retornos extraordinários, mas a alta volatilidade exige atenção.
 :::
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 library(tseries)
 library(xts)
 library(zoo)
@@ -249,7 +249,7 @@ plot_inicial_final(brfs3, "BRFS3")
 -   Após a análise das estratégias de *buy and hold* e da abordagem teórica baseada em máximos e mínimos, passamos agora a investigar a existência de tendências de alta ou baixa. Para isso, observaremos a evolução dos preços dos ativos da carteira e a compararemos com os respectivos volumes negociados, conforme os princípios da Teoria de Dow.
 :::
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 library(tseries)
 library(quantmod)
 library(TTR)
@@ -346,7 +346,7 @@ for (ticker in acoes) {
 Ao calcularmos a média e o desvio padrão dos preços, buscamos compreender a dispersão dos valores em torno do seu ponto central. O coeficiente de variação, por sua vez, expressa essa dispersão de forma relativa à média, indicando em termos percentuais o quanto o preço de um ativo oscila no período analisado. Dessa forma, ele se torna um indicador eficiente para avaliar o risco relativo: quanto maior for o coeficiente, maior tende a ser a volatilidade do ativo, refletindo um nível mais elevado de incerteza.
 :::
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 
 Media.lwsa3 <- mean(lwsa3); Desvio.lwsa3 <- sd(lwsa3)
 Media.elet6 <- mean(elet6); Desvio.elet6 <- sd(elet6)
@@ -375,7 +375,7 @@ knitr::kable(tabela_resumo, digits = 4, caption = "Média e Desvio Padrão dos A
 Com os resultados obtidos, observa-se que o ativo **LWSA3** apresentou o maior coeficiente de variação, atingindo **12,72%**, enquanto o menor valor foi registrado pela **ELET6**, com **2,74%**. Em seguida, destacam-se **BRFS3 (4,21%)**, **ITSA4 (5,42%)** e **RENT3 (6,23%)**. Para efeito de comparação, o **Ibovespa** apresentou um coeficiente de **3,01%**.
 :::
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 #==MEDIDA DE RISCO dos PREÇOS (%) ================
 
 CVlwsa3 <- sd(lwsa3)/mean(lwsa3)*100
@@ -409,7 +409,7 @@ knitr::kable(tabela_cvpreco, digits = 2, caption = "Coeficiente de Variação (P
 Ao analisarmos a média e o desvio padrão dos retornos, buscamos compreender de forma mais consistente a volatilidade e o risco dos ativos. O coeficiente obtido a partir dos retornos é mais representativo da incerteza: quanto maior o coeficiente, maior tende a ser a volatilidade, indicando maior incerteza. Quando o coeficiente é negativo, isso evidencia não apenas alta volatilidade, mas também uma tendência de perda.
 :::
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 ### RETORNO ##############################
 
 rlwsa3 <- diff(log(lwsa3))
@@ -455,7 +455,7 @@ A **BRFS3** se destaca por apresentar coeficiente extremamente elevado e negativ
 Em comparação, o **IBOV** apresentou retorno médio de **0,0723%** e coeficiente de variação **13,60**, ou seja, mais volátil em termos relativos do que ativos como **LWSA3** e **ITSA4**. Isso indica que determinados ativos individuais podem oferecer uma relação risco-retorno mais favorável do que o próprio índice de mercado, reforçando a importância da seleção criteriosa de ativos dentro de uma estratégia de diversificação.
 :::
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 # Média do retorno (%) e desvio
 rlwsa3 <- diff(log(lwsa3)); mrlwsa3 <- mean(rlwsa3)*100; Drlwsa3 <- sd(rlwsa3);CVlwsa3 <- Drlwsa3 / mrlwsa3 * 100
 relet6 <- diff(log(elet6)); mrelet6 <- mean(relet6)*100; Drelet6 <- sd(relet6);cvelet6 <- Drelet6 / mrelet6 * 100
@@ -499,7 +499,7 @@ Portanto, ainda que alguns histogramas sugiram proximidade com a forma normal, o
 -   O **IBOV** apresentou retorno médio de **0,0723%**, desvio-padrão de **0,0098** e coeficiente de variação de **13,60**, revelando maior volatilidade relativa em comparação a alguns ativos individuais, como LWSA3 e ITSA4. Além disso, o teste de **Jarque-Bera (p=0,0066)** rejeitou a hipótese de normalidade, indicando que os retornos do índice não seguem uma distribuição normal. Isso sugere que, embora o IBOV seja usado como benchmark de mercado, nem sempre apresenta o melhor equilíbrio risco-retorno frente a ativos específicos ou carteiras diversificadas.
 :::
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 # Todos os Histogramas
 
   #Preço
@@ -524,7 +524,7 @@ hist(ribov,  nclass = 30, col = "purple", main = "Hist Ret IBOV",  xlab = "Retor
 
 ```
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 #Tabela Jarque Bera e P-Valor
 lwsa3jb <- jarqueberaTest(lwsa3)@test$statistic
 lwsa3jbp <- jarqueberaTest(lwsa3)@test$p.value
@@ -572,292 +572,67 @@ knitr::kable(tabela_jb, digits = 4, caption = "Teste de Normalidade (Jarque-Bera
 -   O estudo do comportamento individual é estudada na teoria da escolha do consumidor, que analisa como indivíduos alocam recursos para maximizar sua utilidade diante de restrições orçamentárias. o autor Hal Varian, em seus estudos sobre escolha intertemporal, descreve como as decisões de consumo e poupança são influenciadas pela taxa de juros, que determina o custo de adiar ou antecipar o consumo. Nesse contexto, o indivíduo compara o consumo presente e futuro utilizando conceitos como valor presente, avaliando como diferentes taxas de juros alteram sua restrição orçamentária intertemporal. Além disso, quando há incerteza sobre retornos futuros, a função de utilidade sob risco e a análise probabilística, como a função de densidade acumulada, ajudam a explicar como diferentes perfis de investidores tomam decisões entre opções seguras (renda fixa) e arriscadas (ações), considerando retorno esperado e tolerância ao risco , logo podemos observar que a depender do apetiti para o risco do investidor havera uma utilidade que é maximizada de acordo com o o cenerio que melhor se encaixa com o apetite para o risco do investidor a densidade da probabilidade é útil nesse momento
 :::
 
--   
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+Drlwsa3 <- sd(rlwsa3); Vollwsa3 <- (Drlwsa3*100)*sqrt(252)
+Drelet6 <- sd(relet6); Volelet6 <- (Drelet6*100)*sqrt(252)
+Dritsa4 <- sd(ritsa4); Volitsa4 <- (Dritsa4*100)*sqrt(252)
+Drbbdc4 <- sd(rrent3); Volrent3 <- (Drrent3*100)*sqrt(252)
+Drmrfg3 <- sd(rbrfs3); Volbrfs3 <- (Drbrfs3*100)*sqrt(252)
+Dribov <- sd(ribov); Volibov <- (Dribov*100)*sqrt(252)
 
--   
+# Cria a tabela com os ativos, média e desvio padrão
+tabela_vol <- tibble::tibble(
+  Ativo = c("LWSA3", "ELET6", "ITSA4", "RENT3", "BRFS3", "IBOV"),
+  Volatilidade = c(Vollwsa3, Volelet6, Volitsa4, Volrent3, Volbrfs3, Volibov),)
 
-    ```{r}
-    Drlwsa3 <- sd(rlwsa3); Vollwsa3 <- (Drlwsa3*100)*sqrt(252)
-    Drelet6 <- sd(relet6); Volelet6 <- (Drelet6*100)*sqrt(252)
-    Dritsa4 <- sd(ritsa4); Volitsa4 <- (Dritsa4*100)*sqrt(252)
-    Drbbdc4 <- sd(rrent3); Volrent3 <- (Drrent3*100)*sqrt(252)
-    Drmrfg3 <- sd(rbrfs3); Volbrfs3 <- (Drbrfs3*100)*sqrt(252)
-    Dribov <- sd(ribov); Volibov <- (Dribov*100)*sqrt(252)
-
-    # Cria a tabela com os ativos, média e desvio padrão
-    tabela_vol <- tibble::tibble(
-      Ativo = c("LWSA3", "ELET6", "ITSA4", "RENT3", "BRFS3", "IBOV"),
-      Volatilidade = c(Vollwsa3, Volelet6, Volitsa4, Volrent3, Volbrfs3, Volibov),)
-
-    # Reordena os ativos deixando IBOV por último
-    tabela_vol$Ativo <- factor(tabela_vol$Ativo,
-                                     levels = c("LWSA3", "ELET6", "ITSA4", "RENT3", "BRFS3", "IBOV"))
+# Reordena os ativos deixando IBOV por último
+tabela_vol$Ativo <- factor(tabela_vol$Ativo,
+                                 levels = c("LWSA3", "ELET6", "ITSA4", "RENT3", "BRFS3", "IBOV"))
 
 
-    # Exibe a tabela 
-    knitr::kable(tabela_vol, digits = 2, caption = "Coeficiente de Variação (Preço) dos Ativos")%>%
-      kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"),
-                    full_width = FALSE)
-    ```
+# Exibe a tabela 
+knitr::kable(tabela_vol, digits = 2, caption = "Coeficiente de Variação (Preço) dos Ativos")%>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+                full_width = FALSE)
+```
 
-    -   ::: {style="text-align: justify"}
-        Ao analisarmos a volatilidade dos ativos em comparação com o **Ibovespa** — principal índice de referência do mercado brasileiro, que apresentou volatilidade de **15,62%** — observamos que **todos os ativos da carteira registram níveis superiores ao benchmark**.
+-   ::: {style="text-align: justify"}
+    Ao analisarmos a volatilidade dos ativos em comparação com o **Ibovespa** — principal índice de referência do mercado brasileiro, que apresentou volatilidade de **15,62%** — observamos que **todos os ativos da carteira registram níveis superiores ao benchmark**.
 
-        A **LocaWeb (LWSA3)** se destaca como a mais volátil, com **52,47%**, evidenciando risco mais de três vezes superior ao do mercado. Em seguida aparecem **BRF (BRFS3)** com **39,34%** e **Localiza (RENT3)** com **38,84%**, também muito acima do índice. Já **Eletrobras (ELET6)** e **Itaúsa (ITSA4)**, embora tenham registrado as menores volatilidades entre os ativos (**19,01%** e **19,52%**, respectivamente), ainda assim se situam acima da volatilidade do IBOV.
+    A **LocaWeb (LWSA3)** se destaca como a mais volátil, com **52,47%**, evidenciando risco mais de três vezes superior ao do mercado. Em seguida aparecem **BRF (BRFS3)** com **39,34%** e **Localiza (RENT3)** com **38,84%**, também muito acima do índice. Já **Eletrobras (ELET6)** e **Itaúsa (ITSA4)**, embora tenham registrado as menores volatilidades entre os ativos (**19,01%** e **19,52%**, respectivamente), ainda assim se situam acima da volatilidade do IBOV.
 
-        Esses resultados mostram que os investidores expostos a essa carteira assumem **níveis de risco significativamente maiores do que aqueles de uma carteira diversificada que replica o índice de mercado**. Isso exige **maior tolerância à volatilidade** e reforça a importância de alinhar as expectativas de retorno com o perfil de risco assumido.
-        :::
-
-    -   
-
-        # Análise da distribuição normal
-
-        ## Gráficos de densidade para 1, 2 e 3 desvios padrões
-
-    ::: {style="text-align: justify"}
-    O comportamento individual é analisado pela teoria da escolha do consumidor, que estuda como as pessoas alocam seus recursos para maximizar a utilidade, respeitando limitações orçamentárias. Hal Varian, em seus estudos sobre escolha intertemporal, mostra que as decisões de consumo e poupança são influenciadas pela taxa de juros, que representa o custo de antecipar ou postergar o consumo. Nesse contexto, o indivíduo compara o consumo presente e futuro usando conceitos como valor presente, avaliando como diferentes taxas de juros afetam sua restrição orçamentária ao longo do tempo.
-
-    Quando os retornos futuros são incertos, a função de utilidade sob risco e ferramentas probabilísticas, como a função de densidade acumulada, ajudam a compreender como investidores com perfis distintos escolhem entre opções seguras, como renda fixa, e opções mais arriscadas, como ações, considerando o retorno esperado e sua tolerância ao risco.
-
-    A análise estatística dos retornos financeiros pode ser ilustrada usando desvios-padrão (DP) para entender a dispersão dos retornos:
-
-    -   O intervalo de 1 DP cobre cerca de 68% dos retornos esperados.
-
-    -   O intervalo de 2 DPs abrange aproximadamente 95% dos retornos.
-
-    -   O intervalo de 3 DPs inclui quase 99,7% dos retornos possíveis (regra empírica da normal).
-
-    -   O intervalo de 2,5 DPs serve como comparação adicional.
-
-        Ao aplicar essa análise aos ativos LWSA3, ELET6, ITSA4, RENT3 e BRFS3, bem como ao Ibovespa, é possível visualizar graficamente:
-
-    -   Qual ativo apresenta maior dispersão (volatilidade) em torno da média.
-
-    -   Se os retornos estão concentrados próximos da média ou mais espalhados.
-
-    -   Como o Ibovespa, por ser um índice diversificado, tende a ter menor dispersão em comparação com ativos individuais.
+    Esses resultados mostram que os investidores expostos a essa carteira assumem **níveis de risco significativamente maiores do que aqueles de uma carteira diversificada que replica o índice de mercado**. Isso exige **maior tolerância à volatilidade** e reforça a importância de alinhar as expectativas de retorno com o perfil de risco assumido.
     :::
 
-    ```{r}
-    # novos ("lwsa3.sa", "elet6.sa", "itsa4.sa", "rent3.sa", "brfs3.sa")
+-   
 
-    ## LWSA3
-    Media.lwsa3
-    Desvio.lwsa3
+    # Análise da distribuição normal
 
-    par(mfrow = c(2, 2), oma = c(0, 0, 3, 0))
+    ## Gráficos de densidade para 1, 2 e 3 desvios padrões
 
-    # 1 DP
-    x <- seq(Media.lwsa3 - Desvio.lwsa3, Media.lwsa3 + Desvio.lwsa3, length = 60)
-    y <- dnorm(x, Media.lwsa3, Desvio.lwsa3)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 1 DP")
+::: {style="text-align: justify"}
+O comportamento individual é analisado pela teoria da escolha do consumidor, que estuda como as pessoas alocam seus recursos para maximizar a utilidade, respeitando limitações orçamentárias. Hal Varian, em seus estudos sobre escolha intertemporal, mostra que as decisões de consumo e poupança são influenciadas pela taxa de juros, que representa o custo de antecipar ou postergar o consumo. Nesse contexto, o indivíduo compara o consumo presente e futuro usando conceitos como valor presente, avaliando como diferentes taxas de juros afetam sua restrição orçamentária ao longo do tempo.
 
-    # 2 DP
-    x <- seq(Media.lwsa3 - 2 * Desvio.lwsa3, Media.lwsa3 + 2 * Desvio.lwsa3, length = 60)
-    y <- dnorm(x, Media.lwsa3, Desvio.lwsa3)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 2 DP")
+Quando os retornos futuros são incertos, a função de utilidade sob risco e ferramentas probabilísticas, como a função de densidade acumulada, ajudam a compreender como investidores com perfis distintos escolhem entre opções seguras, como renda fixa, e opções mais arriscadas, como ações, considerando o retorno esperado e sua tolerância ao risco.
 
-    # 3 DP
-    x <- seq(Media.lwsa3 - 3 * Desvio.lwsa3, Media.lwsa3 + 3 * Desvio.lwsa3, length = 60)
-    y <- dnorm(x, Media.lwsa3, Desvio.lwsa3)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 3 DP")
+A análise estatística dos retornos financeiros pode ser ilustrada usando desvios-padrão (DP) para entender a dispersão dos retornos:
 
-    # Faixa maior
-    x <- seq(Media.lwsa3 - 2.5 * Desvio.lwsa3, Media.lwsa3 + 2.5 * Desvio.lwsa3, length = 60)
-    y <- dnorm(x, Media.lwsa3, Desvio.lwsa3)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo mais amplo")
+-   O intervalo de 1 DP cobre cerca de 68% dos retornos esperados.
 
-    # Título geral
-    mtext("LWSA3", outer = TRUE, cex = 1.5)
+-   O intervalo de 2 DPs abrange aproximadamente 95% dos retornos.
 
-    ## ELET6
-    Media.elet6
-    Desvio.elet6
+-   O intervalo de 3 DPs inclui quase 99,7% dos retornos possíveis (regra empírica da normal).
 
-    par(mfrow = c(2, 2), oma = c(0, 0, 3, 0))
+-   O intervalo de 2,5 DPs serve como comparação adicional.
 
-    x <- seq(Media.elet6 - Desvio.elet6, Media.elet6 + Desvio.elet6, length = 60)
-    y <- dnorm(x, Media.elet6, Desvio.elet6)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 1 DP")
+    Ao aplicar essa análise aos ativos LWSA3, ELET6, ITSA4, RENT3 e BRFS3, bem como ao Ibovespa, é possível visualizar graficamente:
 
-    x <- seq(Media.elet6 - 2 * Desvio.elet6, Media.elet6 + 2 * Desvio.elet6, length = 60)
-    y <- dnorm(x, Media.elet6, Desvio.elet6)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 2 DP")
+-   Qual ativo apresenta maior dispersão (volatilidade) em torno da média.
 
-    x <- seq(Media.elet6 - 3 * Desvio.elet6, Media.elet6 + 3 * Desvio.elet6, length = 60)
-    y <- dnorm(x, Media.elet6, Desvio.elet6)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 3 DP")
+-   Se os retornos estão concentrados próximos da média ou mais espalhados.
 
-    x <- seq(Media.elet6 - 2.5 * Desvio.elet6, Media.elet6 + 2.5 * Desvio.elet6, length = 60)
-    y <- dnorm(x, Media.elet6, Desvio.elet6)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo mais amplo")
-
-    mtext("ELET6", outer = TRUE, cex = 1.5)
-
-    ## ITSA4
-    Media.itsa4
-    Desvio.itsa4
-
-    par(mfrow = c(2, 2), oma = c(0, 0, 3, 0))
-
-    x <- seq(Media.itsa4 - Desvio.itsa4, Media.itsa4 + Desvio.itsa4, length = 60)
-    y <- dnorm(x, Media.itsa4, Desvio.itsa4)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 1 DP")
-
-    x <- seq(Media.itsa4 - 2 * Desvio.itsa4, Media.itsa4 + 2 * Desvio.itsa4, length = 60)
-    y <- dnorm(x, Media.itsa4, Desvio.itsa4)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 2 DP")
-
-    x <- seq(Media.itsa4 - 3 * Desvio.itsa4, Media.itsa4 + 3 * Desvio.itsa4, length = 60)
-    y <- dnorm(x, Media.itsa4, Desvio.itsa4)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 3 DP")
-
-    x <- seq(Media.itsa4 - 2.5 * Desvio.itsa4, Media.itsa4 + 2.5 * Desvio.itsa4, length = 60)
-    y <- dnorm(x, Media.itsa4, Desvio.itsa4)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo mais amplo")
-
-    mtext("ITSA4", outer = TRUE, cex = 1.5)
-
-    ## RENT3
-    Media.rent3
-    Desvio.rent3
-
-    par(mfrow = c(2, 2), oma = c(0, 0, 3, 0))
-
-    x <- seq(Media.rent3 - Desvio.rent3, Media.rent3 + Desvio.rent3, length = 60)
-    y <- dnorm(x, Media.rent3, Desvio.rent3)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 1 DP")
-
-    x <- seq(Media.rent3 - 2 * Desvio.rent3, Media.rent3 + 2 * Desvio.rent3, length = 60)
-    y <- dnorm(x, Media.rent3, Desvio.rent3)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 2 DP")
-
-    x <- seq(Media.rent3 - 3 * Desvio.rent3, Media.rent3 + 3 * Desvio.rent3, length = 60)
-    y <- dnorm(x, Media.rent3, Desvio.rent3)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 3 DP")
-
-    x <- seq(Media.rent3 - 2.5 * Desvio.rent3, Media.rent3 + 2.5 * Desvio.rent3, length = 60)
-    y <- dnorm(x, Media.rent3, Desvio.rent3)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo mais amplo")
-
-    mtext("RENT3", outer = TRUE, cex = 1.5)
-
-    ## BRFS3
-    Media.brfs3
-    Desvio.brfs3
-
-    par(mfrow = c(2, 2), oma = c(0, 0, 3, 0))
-
-    x <- seq(Media.brfs3 - Desvio.brfs3, Media.brfs3 + Desvio.brfs3, length = 60)
-    y <- dnorm(x, Media.brfs3, Desvio.brfs3)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 1 DP")
-
-    x <- seq(Media.brfs3 - 2 * Desvio.brfs3, Media.brfs3 + 2 * Desvio.brfs3, length = 60)
-    y <- dnorm(x, Media.brfs3, Desvio.brfs3)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 2 DP")
-
-    x <- seq(Media.brfs3 - 3 * Desvio.brfs3, Media.brfs3 + 3 * Desvio.brfs3, length = 60)
-    y <- dnorm(x, Media.brfs3, Desvio.brfs3)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 3 DP")
-
-    x <- seq(Media.brfs3 - 2.5 * Desvio.brfs3, Media.brfs3 + 2.5 * Desvio.brfs3, length = 60)
-    y <- dnorm(x, Media.brfs3, Desvio.brfs3)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo mais amplo")
-
-    mtext("BRFS3", outer = TRUE, cex = 1.5)
-
-    ## IBOV (mantido)
-    Media.ibov
-    Desvio.ibov
-
-    par(mfrow = c(2, 2), oma = c(0, 0, 3, 0))
-
-    x <- seq(Media.ibov - Desvio.ibov, Media.ibov + Desvio.ibov, length = 60)
-    y <- dnorm(x, Media.ibov, Desvio.ibov)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 1 DP")
-
-    x <- seq(Media.ibov - 2 * Desvio.ibov, Media.ibov + 2 * Desvio.ibov, length = 60)
-    y <- dnorm(x, Media.ibov, Desvio.ibov)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 2 DP")
-
-    x <- seq(Media.ibov - 3 * Desvio.ibov, Media.ibov + 3 * Desvio.ibov, length = 60)
-    y <- dnorm(x, Media.ibov, Desvio.ibov)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo de 3 DP")
-
-    x <- seq(Media.ibov - 2.5 * Desvio.ibov, Media.ibov + 2.5 * Desvio.ibov, length = 60)
-    y <- dnorm(x, Media.ibov, Desvio.ibov)
-    plot(x, y, type = "l", lwd = 2, col = "red", main = "Intervalo mais amplo")
-
-    mtext("IBOV", outer = TRUE, cex = 1.5)
-
-
-    ```
-
-## Probabilidades dentro dos intervalos da média
-
-```{r}
-# LWSA3
-pnorm(Media.lwsa3 + Desvio.lwsa3, Media.lwsa3, Desvio.lwsa3) -
-  pnorm(Media.lwsa3 - Desvio.lwsa3, Media.lwsa3, Desvio.lwsa3)
-
-pnorm(Media.lwsa3 + 2 * Desvio.lwsa3, Media.lwsa3, Desvio.lwsa3) -
-  pnorm(Media.lwsa3 - 2 * Desvio.lwsa3, Media.lwsa3, Desvio.lwsa3)
-
-pnorm(Media.lwsa3 + 3 * Desvio.lwsa3, Media.lwsa3, Desvio.lwsa3) -
-  pnorm(Media.lwsa3 - 3 * Desvio.lwsa3, Media.lwsa3, Desvio.lwsa3)
-
-# ELET6
-pnorm(Media.elet6 + Desvio.elet6, Media.elet6, Desvio.elet6) -
-  pnorm(Media.elet6 - Desvio.elet6, Media.elet6, Desvio.elet6)
-
-pnorm(Media.elet6 + 2 * Desvio.elet6, Media.elet6, Desvio.elet6) -
-  pnorm(Media.elet6 - 2 * Desvio.elet6, Media.elet6, Desvio.elet6)
-
-pnorm(Media.elet6 + 3 * Desvio.elet6, Media.elet6, Desvio.elet6) -
-  pnorm(Media.elet6 - 3 * Desvio.elet6, Media.elet6, Desvio.elet6)
-
-# ITSA4
-pnorm(Media.itsa4 + Desvio.itsa4, Media.itsa4, Desvio.itsa4) -
-  pnorm(Media.itsa4 - Desvio.itsa4, Media.itsa4, Desvio.itsa4)
-
-pnorm(Media.itsa4 + 2 * Desvio.itsa4, Media.itsa4, Desvio.itsa4) -
-  pnorm(Media.itsa4 - 2 * Desvio.itsa4, Media.itsa4, Desvio.itsa4)
-
-pnorm(Media.itsa4 + 3 * Desvio.itsa4, Media.itsa4, Desvio.itsa4) -
-  pnorm(Media.itsa4 - 3 * Desvio.itsa4, Media.itsa4, Desvio.itsa4)
-
-# RENT3
-pnorm(Media.rent3 + Desvio.rent3, Media.rent3, Desvio.rent3) -
-  pnorm(Media.rent3 - Desvio.rent3, Media.rent3, Desvio.rent3)
-
-pnorm(Media.rent3 + 2 * Desvio.rent3, Media.rent3, Desvio.rent3) -
-  pnorm(Media.rent3 - 2 * Desvio.rent3, Media.rent3, Desvio.rent3)
-
-pnorm(Media.rent3 + 3 * Desvio.rent3, Media.rent3, Desvio.rent3) -
-  pnorm(Media.rent3 - 3 * Desvio.rent3, Media.rent3, Desvio.rent3)
-
-# BRFS3
-pnorm(Media.brfs3 + Desvio.brfs3, Media.brfs3, Desvio.brfs3) -
-  pnorm(Media.brfs3 - Desvio.brfs3, Media.brfs3, Desvio.brfs3)
-
-pnorm(Media.brfs3 + 2 * Desvio.brfs3, Media.brfs3, Desvio.brfs3) -
-  pnorm(Media.brfs3 - 2 * Desvio.brfs3, Media.brfs3, Desvio.brfs3)
-
-pnorm(Media.brfs3 + 3 * Desvio.brfs3, Media.brfs3, Desvio.brfs3) -
-  pnorm(Media.brfs3 - 3 * Desvio.brfs3, Media.brfs3, Desvio.brfs3)
-
-# IBOV
-pnorm(Media.ibov + Desvio.ibov, Media.ibov, Desvio.ibov) -
-  pnorm(Media.ibov - Desvio.ibov, Media.ibov, Desvio.ibov)
-
-pnorm(Media.ibov + 2 * Desvio.ibov, Media.ibov, Desvio.ibov) -
-  pnorm(Media.ibov - 2 * Desvio.ibov, Media.ibov, Desvio.ibov)
-
-pnorm(Media.ibov + 3 * Desvio.ibov, Media.ibov, Desvio.ibov) -
-  pnorm(Media.ibov - 3 * Desvio.ibov, Media.ibov, Desvio.ibov)
-
-
-```
+-   Como o Ibovespa, por ser um índice diversificado, tende a ter menor dispersão em comparação com ativos individuais.
+:::
 
 ## Conclusão:
 
@@ -881,137 +656,6 @@ A análise das estatísticas básicas, considerando média dos preços, desvio p
 Para referência, o **Ibovespa (IBOV)** é utilizado como benchmark, por ser um índice diversificado que reflete o desempenho do mercado de ações brasileiro. Segundo Bovespa (2025), o IBOV fornece uma medida de risco relativa menor devido à diversificação, servindo como parâmetro para comparação com ativos individuais.
 :::
 
-````         
-Para o investidor moderado, que valoriza estabilidade, a alocação em ativos como **ELET6 e ITSA4** pode oferecer maior previsibilidade de resultados. Por outro lado, ativos como **LWSA3 e BRFS3**, com volatilidade mais elevada, demandam atenção redobrada, já que apresentam maior incerteza quanto aos retornos futuros.
-
-Portanto, embora todos os ativos analisados tenham riscos inerentes à renda variável, a diferença de volatilidade entre eles permite a construção de estratégias diferenciadas de investimento, alinhadas a diferentes perfis de tolerância ao risco, reforçando a importância de combinar medidas estatísticas com análise de retorno logarítmico e histórico de preços.
-
-```{r}
-# Carregar pacotes necessários
-library(tseries)
-library(dplyr)
-
-# Definir parâmetros
-ativos <- c("lwsa3.sa", "elet6.sa", "itsa4.sa", "rent3.sa", "brfs3.sa")
-nomes_ativos <- c("LocaWeb", "Eletrobras", "Itaúsa", "Localiza", "BRF")
-# Criar data.frame para armazenar resultados
-resultados <- data.frame(
-  Ativo = character(),
-  Retorno_Medio = numeric(),
-  Volatilidade_Anualizada = numeric(),
-  stringsAsFactors = FALSE
-)
-
-# Loop pelos ativos
-for (i in 1:length(ativos)) {
-  ativo <- ativos[i]
-  nome_ativo <- nomes_ativos[i]
-  
-  # Baixar os preços de fechamento
-  preco <- get.hist.quote(ativo, quote = "Close", start = dataini, end = datafim)
-  
-  # Calcular retornos logarítmicos
-  retornos <- diff(log(preco))
-  retornos <- na.omit(retornos)
-  
-  # Calcular estatísticas dos retornos
-  m_retorno <- mean(retornos)
-  
-  # Calcular volatilidade anualizada
-  d_retorno <- sd(retornos)
-  volatilidade_anual <- (d_retorno * 100) * sqrt(252)
-  
-  # Armazenar resultados
-  resultados <- rbind(resultados, data.frame(
-    Ativo = nome_ativo,
-    Retorno_Medio = m_retorno * 100,
-    Volatilidade_Anualizada = volatilidade_anual
-  ))
-}
-
-# Calcular índice de Sharpe (assumindo taxa livre de risco zero)
-resultados$Sharpe_Ratio <- resultados$Retorno_Medio / resultados$Volatilidade_Anualizada
-
-# Criar rankings
-ranking_retorno <- resultados %>%
-  arrange(desc(Retorno_Medio)) %>%
-  mutate(Ranking_Retorno = row_number())
-
-ranking_volatilidade <- resultados %>%
-  arrange(Volatilidade_Anualizada) %>%
-  mutate(Ranking_Volatilidade = row_number())
-
-ranking_sharpe <- resultados %>%
-  arrange(desc(Sharpe_Ratio)) %>%
-  mutate(Ranking_Sharpe = row_number())
-
-# Combinar rankings
-rankings_completos <- ranking_retorno %>%
-  select(Ativo, Ranking_Retorno) %>%
-  left_join(ranking_volatilidade %>% select(Ativo, Ranking_Volatilidade), by = "Ativo") %>%
-  left_join(ranking_sharpe %>% select(Ativo, Ranking_Sharpe), by = "Ativo") %>%
-  left_join(resultados, by = "Ativo")
-
-# Ordenar por Ranking de Sharpe (melhor performance ajustada ao risco)
-rankings_completos <- rankings_completos %>%
-  arrange(Ranking_Sharpe)
-
-# Exibir tabela de rankings
-cat("=== RANKING DE ATIVOS ===\n")
-cat("(Ordenado pelo melhor Índice de Sharpe)\n\n")
-print(rankings_completos, row.names = FALSE)
-
-# Visualização gráfica dos rankings
-par(mfrow = c(1, 3), mar = c(5, 4, 4, 2) + 0.1)
-
-# Gráfico 1: Retorno Médio
-barplot(rankings_completos$Retorno_Medio, 
-        names.arg = rankings_completos$Ativo,
-        main = "Retorno Médio Diário",
-        ylab = "Retorno (%)",
-        col = "lightblue",
-        las = 2)
-
-# Gráfico 2: Volatilidade Anualizada
-barplot(rankings_completos$Volatilidade_Anualizada, 
-        names.arg = rankings_completos$Ativo,
-        main = "Volatilidade Anualizada",
-        ylab = "Volatilidade (%)",
-        col = "lightcoral",
-        las = 2)
-
-# Gráfico 3: Índice de Sharpe
-barplot(rankings_completos$Sharpe_Ratio, 
-        names.arg = rankings_completos$Ativo,
-        main = "Índice de Sharpe",
-        ylab = "Sharpe Ratio",
-        col = "lightgreen",
-        las = 2)
-
-# Restaurar configuração padrão
-par(mfrow = c(1, 1))
-
-# Criar scatter plot retorno vs volatilidade
-plot(rankings_completos$Volatilidade_Anualizada, 
-     rankings_completos$Retorno_Medio,
-     main = "Relação Retorno vs Volatilidade",
-     xlab = "Volatilidade Anualizada (%)",
-     ylab = "Retorno Médio Diário (%)",
-     pch = 19, col = "blue", cex = 2)
-
-# Adicionar rótulos
-text(rankings_completos$Volatilidade_Anualizada, 
-     rankings_completos$Retorno_Medio,
-     labels = rankings_completos$Ativo,
-     pos = 3, cex = 0.8)
-
-# Adicionar linha de referência (volatilidade do Ibovespa)
-abline(v = 15.62, col = "red", lty = 2)
-text(15.62, max(rankings_completos$Retorno_Medio), 
-     "Ibovespa (15.62%)", pos = 2, col = "red")
-```
-````
-
 # Modelo Markowitz
 
 ::: {style="text-align: justify"}
@@ -1030,7 +674,7 @@ datafim <- as.Date("2025-06-29")
 
 ### Baixando os dados
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 # Baixando os dados dos 5 ativos
 #install.packages("tseries")
 lwsa3  <- get.hist.quote("lwsa3.sa",  quote = "Close", start = dataini, end = datafim);length(lwsa3)
@@ -1095,7 +739,7 @@ Markowitz demonstrou que, ao combinar ativos com correlação **baixa ou negativ
     -   Cálculo de covariâncias para estimar o risco da carteira
 :::
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 library(GetBCBData)
 library(fBasics)
 Correl=cbind(lwsa3, elet6, itsa4, rent3, brfs3);Correl
@@ -1148,20 +792,19 @@ corrplot(matriz_cor, method = "color", addCoef.col = "black")
 -   **Correlação**: A maior parte das correlações entre ativos foi **positiva e moderada** (valores entre 0,15 e 0,48), o que indica que os ativos tendem a se mover na mesma direção, mas não de forma perfeita. O destaque fica para a correlação **negativa entre brfs3 e itsa4 (-0,044)**, que embora fraca, ainda contribui para o efeito de diversificação da carteira.
 :::
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 # Carregar pacotes necessários
 library(timeSeries)
 library(fPortfolio)
 library(GetBCBData)
 library(fBasics)
-# ----------------------------
+
 # 1. Definição dos ativos
-# ----------------------------
+
 ativos <- c("lwsa3", "elet6", "itsa4", "rent3", "brfs3")
 
-# ----------------------------
 # 2. Construção da base
-# ----------------------------
+
 Basico <- data.frame(na.omit(merge(lwsa3,elet6,itsa4,rent3,brfs3)))
 names(Basico) <- ativos
 
@@ -1231,7 +874,7 @@ A análise da carteira mostra a aplicação prática da teoria de Markowitz: com
 
 ## Organizando os retornos em um dataframe:
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 library(GetBCBData)
 library(fBasics)
 
@@ -1261,7 +904,7 @@ points(0.0237,0.0074,pch=19, cex=1.5,col="red")
 -   O **retorno esperado médio da carteira** é de aproximadamente **0,685% ao período analisado**, com um **risco medido pelo desvio padrão (Sigma) de 3,31%**. A carteira apresenta também indicadores de risco mais extremos, como **VaR de 5,46%** e **CVaR de 5,55%**, indicando que, em cenários adversos, as perdas podem ser relevantes.
 :::
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 library(GetBCBData)
 library(fBasics)
 
@@ -1289,7 +932,7 @@ GraficoPizza
 -   **Risco-Retorno Balanceado**: Com volatilidade de 2,22% para um retorno esperado de 0,5%, a carteira situa-se em um ponto eficiente da fronteira, onde qualquer tentativa de aumentar o retorno implicaria em aumento desproporcional do risco, e vice-versa.
 :::
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 library(GetBCBData)
 library(fBasics)
 
@@ -1318,14 +961,14 @@ CarteiraCustom<-portfolioSpec(portfolio=list(
 ### Carteira de retorno cartelado
 
 ::: {style="text-align: justify"}
--   A carteira otimizada com retorno-alvo de 0,6% exemplifica dramaticamente os princípios fundamentais da teoria de otimização de portfólio. Esta composição extremamente concentrada - com **81,93% em LWSA3** e **18,07% em ITSA4**, excluindo completamente os demais ativos - revela importantes insights sobre a eficiência fronteira neste nível específico de retorno.
+-   A carteira otimizada com retorno-alvo de 0,6% exemplifica os princípios fundamentais da teoria de otimização de portfólio. Esta composição extremamente concentrada - com **81,93% em LWSA3** e **18,07% em ITSA4**, excluindo completamente os demais ativos - revela importantes insights sobre a eficiência fronteira neste nível específico de retorno.
 
 -   **Maximização de Retorno com Restrição de Risco**: Para atingir o retorno desejado de 0,6%, o algoritmo de otimização identificou que apenas dois ativos oferecem a combinação ideal de retorno esperado e contribuição marginal ao risco da carteira. A exclusão de ELET6, RENT3 e BRFS3 indica que estes ativos, individualmente ou em combinação, não conseguiam oferecer a eficiência risco-retorno necessária para este objetivo específico.
 
 -   **Minimização da Variância para Retorno-Alvo**: A concentração em apenas dois ativos demonstra que, matematicamente, esta é a combinação que minimiza a variância total da carteira (2,79%) para o retorno exigido de 0,6%. A contribuição desproporcional de LWSA3 para o risco total (96,65%) versus ITSA4 (3,35%) sugere que o primeiro é significativamente mais volátil, mas oferece retornos esperados suficientes para justificar seu peso dominante na carteira.
 :::
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 library(GetBCBData)
 library(fBasics)
 
@@ -1360,7 +1003,7 @@ GraficoPizzaCustom<-weightsPie(CarteiraCustomizada);GraficoPizzaCustom
 -   **Composição Balanceada de Risco**: A alocação mostra distribuição equilibrada entre ELET6 (35,75%), ITSA4 (47,51%), BRFS3 (13,53%) e RENT3 (3,20%), com contribuições de risco correspondentes aproximadamente aos pesos (34,04%, 49,70%, 12,88% e 3,39% respectivamente). Esta proporcionalidade indica correlações favoráveis entre os ativos selecionados.
 :::
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 library(GetBCBData)
 library(fBasics)
 
@@ -1398,7 +1041,7 @@ CarteiraCustom<-portfolioSpec(portfolio=list(
 -   **Eficiência Marginal na Fronteira**: O resultado demonstra que, segundo o modelo matemático, a adição de qualquer outro ativo à carteira **reduziria a eficiência global** do portfólio, diminuindo o índice de Sharpe abaixo do nível ótimo alcançável com LWSA3 isoladamente.
 :::
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 library(GetBCBData)
 library(fBasics)
 
@@ -1424,25 +1067,7 @@ CarteiraCustom<-portfolioSpec(portfolio=list(
   GraficoPizzaCustom<-weightsPie(CarteiraCustomizada);GraficoPizzaCustom
 ```
 
-### Matriz CAPM dos 5 ativos:
-
-::: {style="text-align: justify"}
-A matriz CAPM (Capital Asset Pricing Model) representa uma evolução significativa na forma de compreender e quantificar o risco e retorno dos ativos financeiros. Esta integração permite uma abordagem mais sofisticada para a construção de carteiras eficientes. O Modelo de Markowitz, com sua matriz de covariâncias, fornece a base matemática para entender como diferentes ativos se relacionam em termos de risco. A grande inovação do CAPM foi introduzir o conceito de beta (β) - uma medida que quantifica o risco sistemático de um ativo em relação ao mercado como um todo.
-:::
-
-```{r}
-library(GetBCBData)
-library(fBasics)
-library(rbcb)
-require(rbcb)
-require(ggplot2)
-
-SelicD <- get_series(11, start_date = "2025-01-01", end_date ="2025-06-29") 
-SelicD; View(SelicD); print(tail(SelicD))
-plot.ts(SelicD$'11', type="l", col="red", lw=3)
-```
-
-### Beta Mercado:
+## Beta Mercado:
 
 ::: {style="text-align: justify"}
 -   O conceito de Beta insere-se na teoria do mercado de capitais como uma alternativa pragmática para superar as complexidades operacionais do modelo de Markowitz. Enquanto o modelo de Markowitz requer o cálculo de matrizes de covariância entre todos os pares de ativos - uma abordagem computacionalmente intensiva e suscetível a erros de estimação -, o modelo de mercado simplifica esta análise ao relacionar o comportamento de cada ativo diretamente com um índice de referência através de uma regressão linear simples. No contexto brasileiro, o Ibovespa consolida-se como nosso principal benchmark, sintetizando o desempenho dos papéis mais representativos negociados na B3. Esta relação funcional permite quantificar a sensibilidade individual dos ativos aos movimentos do mercado por meio do coeficiente Beta.
@@ -1450,7 +1075,7 @@ plot.ts(SelicD$'11', type="l", col="red", lw=3)
 
 #### Baixando os dados da Selic:
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 library(GetBCBData)
 library(fBasics)
 #Baixando os dados da selic:
@@ -1462,14 +1087,22 @@ library(zoo)
 Selic=zoo(selic$'11')
 index(Selic)=selic$date
 Selic;plot(Selic) 
+
 ```
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+
 library(GetBCBData)
 library(fBasics)
 library(rbcb)
 #install.packages("ggplot2")
 library(ggplot2)
+library(rbcb)
+
+SelicD <- get_series(11, start_date = "2025-01-01", end_date ="2025-06-29") 
+SelicD; View(SelicD); print(tail(SelicD))
+#plot.ts(SelicD$'11', type="l", col="red",lw=3)
+
 {
   colnames(SelicD) <- c("data", "selicdiaria")
   
@@ -1502,7 +1135,7 @@ Este código está realizando uma **coleta e preparação abrangente de dados f
 Nesse código estou organizando as séries históricas de preços de ativos financeiros e indicadores de mercado, preparando a base para o cálculo do **Beta** e análise de risco sistemático de uma carteira composta por cinco ativos: **LWSA3, ELET6, ITSA4, RENT3 e BRFS3**.
 :::
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 
 library(yfR)
 library(GetBCBData)
@@ -1575,7 +1208,7 @@ O código implementa, de forma prática:
 5.  Aplicação prática do **CAPM** para análise de risco e retorno.
 :::
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 library(yfR)
 library(GetBCBData)
 library(zoo)
@@ -1636,7 +1269,7 @@ Betabrfs3=lm(Rbrfs3~Ribov[-1]);Betabrfs3
 -   ARCH: Também não há evidência de clusters de volatilidade. Na prática, este ativo se comporta de forma mais “bem-comportada”, sem exigir modelos muito sofisticados de risco.
 :::
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 #### Testes Econométricos - Hipóteses do MQO
 ##Ativo lwsa3
 {
@@ -1690,7 +1323,7 @@ Betabrfs3=lm(Rbrfs3~Ribov[-1]);Betabrfs3
     -   Teste ARCH: Apesar do p-valor de 0.5417, que normalmente levaria a não rejeitar a hipótese nula, o resultado sugere que há indícios da presença de efeito ARCH, ou seja, períodos de maior volatilidade tendem a ser seguidos por períodos igualmente voláteis, mesmo que os resíduos médios não apresentem autocorrelação.
     :::
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 library(yfR)
 library(GetBCBData)
 library(zoo)
@@ -1748,7 +1381,7 @@ library(rbcb)
     -   ARCH: O resultado aponta para efeitos ARCH, ou seja, a volatilidade depende de choques passados. Na prática, justifica o uso de modelos GARCH, que são capazes de prever períodos de turbulência e são amplamente usados em precificação de derivativos e controle de risco.
     :::
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 library(yfR)
 library(GetBCBData)
 library(zoo)
@@ -1806,7 +1439,7 @@ library(rbcb)
     -   ARCH: Não encontramos evidência de efeitos ARCH. Em termos práticos, a volatilidade não apresenta clusters marcantes. Esse comportamento é interessante, pois indica que a dinâmica de RENT3 é menos sujeita a choques persistentes.
     :::
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 library(yfR)
 library(GetBCBData)
 library(zoo)
@@ -1864,7 +1497,7 @@ library(rbcb)
     -   ARCH: Sem indícios de efeito ARCH. Na prática, significa que a volatilidade deste ativo é bem distribuída e não forma “clusters” de alta ou baixa volatilidade, comportamento mais próximo ao idealizado pela teoria clássica de finanças.
     :::
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 library(yfR)
 library(GetBCBData)
 library(zoo)
@@ -1908,7 +1541,9 @@ library(rbcb)
 }
 ```
 
-## Gráfico de Comparação dos Betas:
+## Análise de Curto Prazo: 
+
+### Gráfico de Comparação dos Betas:
 
 ::: {style="text-align: justify"}
 -   Análise Prática dos Betas da Carteira:
@@ -1926,7 +1561,7 @@ library(rbcb)
     -   ITSA4 (β = 0,80) e BRFS3 (β = 0,81): Apresentam sensibilidade ligeiramente inferior ao mercado, indicando relativa resiliência durante oscilações.
 :::
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 library(yfR)
 library(GetBCBData)
 library(zoo)
@@ -1942,21 +1577,21 @@ text(x = as.vector(bpb), y = BETA.Mercado,
      col = "black",cex=0.8)
 ```
 
-## Indicadores de Performance:
+## Indicadores de Performance Curto Prazo: 
 
-### Indicador de performance de Jesen:
+::: {style="text-align: justify"}
+## Jesen:
 
--   ::: {style="text-align: justify"}
-    -   O **Alpha de Jensen** mede se um ativo **entregou um retorno acima ou abaixo do esperado**, considerando o risco assumido (β em relação ao mercado).
+-   O **Alpha de Jensen** mede se um ativo **entregou um retorno acima ou abaixo do esperado**, considerando o risco assumido (β em relação ao mercado).
 
-    -   lwsa3 = 0.0422 (4,22%) → ótimo desempenho, entregou retorno acima do que o CAPM esperava.
+-   lwsa3 = 0.0422 (4,22%) → ótimo desempenho, entregou retorno acima do que o CAPM esperava.
 
-    -   rent3 = 0.0097 (0,97%) → levemente positivo, também agregou valor, mas em menor intensidade.
+-   rent3 = 0.0097 (0,97%) → levemente positivo, também agregou valor, mas em menor intensidade.
 
-    -   elet6 (-0,0148), itsa4 (-0,0088), brfs3 (-0,0105) → retornos negativos ajustados ao risco, ou seja, esses ativos não compensaram o risco que assumiram.
-    :::
+-   elet6 (-0,0148), itsa4 (-0,0088), brfs3 (-0,0105) → retornos negativos ajustados ao risco, ou seja, esses ativos não compensaram o risco que assumiram.
+:::
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 {
 names=c("lwsa3", "elet6", "itsa4", "rent3", "brfs3")
 JENSEN=c(Betalwsa3$coef[1], Betaelet6$coef[1],Betaitsa4$coef[1],Betarent3$coef[1],Betabrfs3$coef[1]);names;JENSEN
@@ -1968,7 +1603,499 @@ text(x = as.vector(bpJensen), y = JENSEN,
 }
 ```
 
-### Indicador de performance de Treynor:
+::: {style="text-align: justify"}
+## Treynor:
+
+-   Mede o retorno excedente por unidade de risco sistemático (β).
+
+-   Diferente do Sharpe, que usa o risco total (desvio padrão), o Treynor considera apenas o risco de mercado (sistemático), que não pode ser diversificado.
+
+-   Todos os ativos apresentaram valores negativos → ou seja, nenhum ativo entregou retorno que compensasse o risco de mercado assumido.
+
+-   lwsa3 (-2.78) foi o menos negativo, o que significa que, dentro do conjunto, foi o ativo com melhor desempenho relativo ajustado ao risco.
+
+-   elet6 (-7.31) foi o pior, indicando que esse ativo destruiu mais valor em relação ao risco sistemático.
+
+-   itsa4 (-6.38) e brfs3 (-6.58) também tiveram desempenho bastante ruim.
+
+-   rent3 (-4.45) ficou em situação intermediária.
+:::
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+{
+mean(Rlwsa3)*100
+Betalwsa3$coef[2]
+Treynor<-mean(Rlwsa3)*100/Betalwsa3$coef[2];Treynor
+
+TREYNOR=c(mean(Rlwsa3)*100/Betalwsa3$coef[2],mean(Relet6)*100/Betaelet6$coef[2],mean(Ritsa4)*100/Betaitsa4$coef[2],mean(Rrent3)*100/Betarent3$coef[2],mean(Rbrfs3)*100/Betabrfs3$coef[2]);names;TREYNOR
+
+bpTreynor<-barplot(TREYNOR, main="Indicador de Performance: Treynor", ylim=c(-10,1),names.arg=names , col = "pink", ylab="Percentual %", cex.names=1)
+text(x = as.vector(bpTreynor), y = TREYNOR, 
+     label =  round(TREYNOR, 4), pos = 3, 
+     col = "black",cex=0.8)
+}
+```
+
+::: {style="text-align: justify"}
+## Sharpe:
+
+-   Avalia se os retornos de um ativo compensam a volatilidade que ele apresenta.
+
+-   lwsa3 (-1.39) foi o “menos ruim”, entregando a melhor relação risco-retorno entre os ativos.
+
+-   elet6 (-4.35) e itsa4 (-4.11) foram os piores, indicando alto risco sem retorno proporcional.
+
+-   rent3 (-2.12) e brfs3 (-2.14) ficaram em posição intermediária, mas ainda negativos.
+:::
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+{
+mean(Rlwsa3)
+sd(Rlwsa3)
+Sharpe<-mean(Rlwsa3)/sd(Rlwsa3);Sharpe
+
+SHARPE=c(mean(Rlwsa3)/sd(Rlwsa3),mean(Relet6)/sd(Relet6),mean(Ritsa4)/sd(Ritsa4),mean(Rrent3)/sd(Rrent3),mean(Rbrfs3)/sd(Rbrfs3));names;SHARPE
+
+bpSharpe<-barplot(SHARPE, main="Indicador de Performance: Sharpe", ylim=c(-5,1),names.arg=names , col = "pink", ylab="Percentual %", cex.names=1)
+text(x = as.vector(bpSharpe), y = SHARPE, 
+     label =  round(SHARPE, 4), pos = 3, 
+     col = "black",cex=0.9)
+}
+
+```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+# --- Pacotes necessários ---
+library(ggplot2)
+
+# --- Dados dos ativos ---
+ativos <- data.frame(
+  Ativo   = c("LWSA3", "RENT3", "ELET6", "ITSA4", "BRFS3"),
+  Beta    = c(1.68, 1.16, 0.74, 0.80, 0.81),
+  Alpha   = c(0.0422, 0.0097, -0.0148, -0.0088, -0.0105),
+  Treynor = c(-2.78, -4.45, -7.31, -6.38, -6.58),
+  Sharpe  = c(-1.39, -2.12, -4.35, -4.11, -2.14)
+)
+
+# --- Ranking ---
+ativos$Rank_Alpha   <- rank(-ativos$Alpha, ties.method = "first")
+ativos$Rank_Treynor <- rank(-ativos$Treynor, ties.method = "first")
+ativos$Rank_Sharpe  <- rank(-ativos$Sharpe, ties.method = "first")
+
+ativos$Score_Final <- ativos$Rank_Alpha + ativos$Rank_Treynor + ativos$Rank_Sharpe
+ativos$Ranking     <- rank(ativos$Score_Final, ties.method = "first")
+
+ativos_final <- ativos[order(ativos$Ranking), ]
+
+# --- Mostrar tabela final ---
+print(ativos_final)
+
+# --- Gráfico com ggplot2 ---
+ggplot(ativos_final, aes(x = reorder(Ativo, Ranking), y = -Ranking, fill = Ativo)) +
+  geom_col(width = 0.6, show.legend = FALSE) +
+  geom_text(aes(label = Ranking), vjust = -0.5, size = 5) +
+  labs(title = "Ranking de Desempenho dos Ativos",
+       x = "Ativo", y = "Posição no Ranking (1 = Melhor)") +
+  theme_minimal()
+
+```
+
+:::: {style="text-align: justify"}
+::: {style="text-align: justify"}
+## Conclusão do resultado no Curto Prazo: 
+
+Entre os ativos analisados, **LWSA3 se destacou** como o ativo de melhor desempenho relativo. Apesar de apresentar Beta elevado (alta sensibilidade ao mercado e, portanto, maior risco), conseguiu gerar Alpha positivo expressivo (+4,22%), entregando retorno acima do esperado e superando os demais. Além disso, mesmo com Treynor e Sharpe negativos (como todos os ativos do conjunto), foi o menos ruim, mostrando-se a opção mais eficiente em termos de risco-retorno dentro dessa carteira.
+
+Por outro lado, **ELET6 apresentou o pior desempenho**. Embora tenha Beta defensivo (baixo risco sistemático esperado), destruiu valor em todos os indicadores: Alpha negativo, pior resultado no Treynor (-7,31) e um dos piores Sharpe (-4,35). Isso mostra que o ativo não compensou o risco assumido e falhou em entregar retornos adequados, mesmo sendo menos exposto à volatilidade do mercado.
+
+**RENT3 teve performance intermediária**, com Alpha positivo, mas baixo (+0,97%), além de resultados ainda negativos em Sharpe e Treynor, porém menos graves que ITSA4, BRFS3 e ELET6. ITSA4 e BRFS3 mostraram-se ativos sem retorno ajustado ao risco, ambos destruindo valor, ainda que com volatilidade mais controlada.
+
+### Ranking de Desempenho (melhor → pior):
+
+1.  **LWSA3** → Melhor desempenho geral (alto Alpha, melhor relação risco-retorno relativa).
+
+2.  **RENT3** → Desempenho moderado, Alpha positivo mas baixo, intermediária nos índices de risco.
+
+3.  **BRFS3** → Desempenho fraco, Alpha negativo e Sharpe ruim, mas ainda acima de ITSA4 e ELET6.
+
+4.  **ITSA4** → Desempenho fraco, Alpha negativo e Treynor ruim, mas não tão destrutivo quanto ELET6.
+
+5.  **ELET6** → Pior desempenho, destruiu valor em todos os indicadores, mesmo sendo defensivo.
+:::
+::::
+
+## Análise de Médio Prazo:
+
+<div>
+
+Na analise de Médio prazo estabeleci a janela temporal de 01/04/2025 até 11/08/2025
+
+</div>
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+library(GetBCBData)
+library(fBasics)
+#Baixando os dados da selic:
+library(rbcb)
+#install.packages("GetBCBData")
+
+selic <- get_series(11, start_date = "2025-04-01",end_date ="2025-08-11");selic 
+library(zoo)
+Selic=zoo(selic$'11')
+index(Selic)=selic$date
+Selic;plot(Selic) 
+
+```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+
+library(yfR)
+library(GetBCBData)
+library(zoo)
+library(rbcb)
+
+# 1) IBOVESPA em formato zoo
+ibov_df <- yf_get("^BVSP", first_date = "2025-04-01", last_date = "2025-08-11")
+ibov <- zoo(ibov_df$price_adjusted, order.by = ibov_df$ref_date)  # objeto zoo
+
+# 3) Junta Ibov + Selic
+dados2 <- na.omit(merge(ibov, Selic))
+dados2 <- data.frame(Data = index(dados2), coredata(dados2))
+names(dados2) <- c("Data", "Ibovespa", "SELIC")
+attach(dados2); dados2
+
+# 4) Ativos em formato zoo
+ativos_df <- yf_get(
+  tickers = c("LWSA3.SA", "ELET6.SA", "ITSA4.SA", "RENT3.SA", "BRFS3.SA"),
+  first_date = "2025-04-01",
+  last_date = Sys.Date()
+)
+
+# Converte cada ativo para zoo separado (igual professor fez)
+lwsa3 <- zoo(ativos_df$price_adjusted[ativos_df$ticker == "LWSA3.SA"],
+             order.by = ativos_df$ref_date[ativos_df$ticker == "LWSA3.SA"])
+
+elet6 <- zoo(ativos_df$price_adjusted[ativos_df$ticker == "ELET6.SA"],
+             order.by = ativos_df$ref_date[ativos_df$ticker == "ELET6.SA"])
+
+itsa4 <- zoo(ativos_df$price_adjusted[ativos_df$ticker == "ITSA4.SA"],
+             order.by = ativos_df$ref_date[ativos_df$ticker == "ITSA4.SA"])
+
+rent3 <- zoo(ativos_df$price_adjusted[ativos_df$ticker == "RENT3.SA"],
+             order.by = ativos_df$ref_date[ativos_df$ticker == "RENT3.SA"])
+
+brfs3 <- zoo(ativos_df$price_adjusted[ativos_df$ticker == "BRFS3.SA"],
+             order.by = ativos_df$ref_date[ativos_df$ticker == "BRFS3.SA"])
+
+# 5) Merge geral (igual professor)
+Ativos <- merge(lwsa3, elet6, itsa4, rent3, brfs3, ibov, Selic)
+length(na.omit(Ativos[,1]))
+Data1 <- index(na.omit(Ativos)); length(Data1)
+
+# 6) Carteira BETA final
+CarteiraBETA <- data.frame(na.omit(Ativos), Data1)
+names(CarteiraBETA) <- c("lwsa3", "elet6", "itsa4", "rent3", "brfs3", "Ibovespa", "Selic", "Data1")
+attach(CarteiraBETA)
+
+options(max.print = 99999)
+CarteiraBETA
+n <- length(CarteiraBETA[,1]); n
+CarteiraBETA[n,]
+
+# 7) Exportar
+write.table(CarteiraBETA, file = "BetaCarteira.txt", row.names = FALSE)
+
+```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+library(yfR)
+library(GetBCBData)
+library(zoo)
+library(rbcb)
+
+CarteiraBETA<-read.table("BetaCarteira.txt", head=T)
+names(CarteiraBETA)<-c("lwsa3", "elet6", "itsa4", "rent3", "brfs3","ibovespa","Selic", "Data1")
+attach(CarteiraBETA)
+CarteiraBETA; length((CarteiraBETA$Selic))
+
+CarteiraBETA$ibovespa;length(CarteiraBETA$ibovespa)
+CarteiraBETA$lwsa3;length(CarteiraBETA$lwsa3)
+CarteiraBETA$Selic;length(CarteiraBETA$Selic)
+
+ribov=diff(log(ibovespa));ribov;length(ribov)
+Ribov=ribov*100;Ribov;mean(Ribov)
+RSelic=CarteiraBETA$Selic[-1];length(CarteiraBETA$Selic[-1])
+RSelic
+
+rlwsa3=diff(log(CarteiraBETA$lwsa3[-1]));length(CarteiraBETA$lwsa3[-1])
+relet6=diff(log(CarteiraBETA$elet6[-1]));length(CarteiraBETA$elet6[-1])
+ritsa4=diff(log(CarteiraBETA$itsa4[-1]));length(CarteiraBETA$itsa4[-1])
+rrent3=diff(log(CarteiraBETA$rent3[-1]));length(CarteiraBETA$rent3[-1])
+rbrfs3=diff(log(CarteiraBETA$brfs3[-1]));length(CarteiraBETA$brfs3[-1])
+
+#RIbov=(rIbov-Selic[-1])
+Ribov=(ribov-RSelic);length(Ribov);Ribov
+Rlwsa3=rlwsa3-RSelic[-1]
+Rlwsa3;length(Rlwsa3)
+Relet6=relet6-RSelic[-1]
+Ritsa4=ritsa4-RSelic[-1]
+Rrent3=rrent3-RSelic[-1]
+Rbrfs3=rbrfs3-RSelic[-1]
+
+#Cálculo do Beta vivt3 (+...)------------------------------------------------------------------------------------------------------
+
+Betalwsa3=lm(Rlwsa3~Ribov[-1])
+Betalwsa3
+Betaelet6=lm(Relet6~Ribov[-1]);Betaelet6
+Betaitsa4=lm(Ritsa4~Ribov[-1]);Betaitsa4
+Betarent3=lm(Rrent3~Ribov[-1]);Betarent3
+Betabrfs3=lm(Rbrfs3~Ribov[-1]);Betabrfs3
+```
+
+::: {style="text-align: justify"}
+:::
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+library(yfR)
+library(GetBCBData)
+library(zoo)
+library(rbcb)
+
+names=c("lwsa3", "elet6", "itsa4", "rent3", "brfs3")
+BETA.Mercado=c(Betalwsa3$coef[2],Betaelet6$coef[2],Betaitsa4$coef[2],Betarent3$coef[2],Betabrfs3$coef[2]);names;BETA.Mercado
+
+
+bpb<-barplot(BETA.Mercado, main="Cálculo do Beta-Mercado da Carteira Sugerida (90 dias)", ylim=c(0,3.0),names.arg=names, ylab="Percentual %", cex.names=1, col="pink")
+text(x = as.vector(bpb), y = BETA.Mercado, 
+     label =  round(BETA.Mercado, 2), pos = 3, 
+     col = "black",cex=0.8)
+```
+
+## Indicadores de Performance de Médio Prazo:
+
+::: {style="text-align: justify"}
+:::
+
+::: {style="text-align: justify"}
+## Jesen:
+:::
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+{
+names=c("lwsa3", "elet6", "itsa4", "rent3", "brfs3")
+JENSEN=c(Betalwsa3$coef[1], Betaelet6$coef[1],Betaitsa4$coef[1],Betarent3$coef[1],Betabrfs3$coef[1]);names;JENSEN
+
+bpJensen<-barplot(JENSEN, main="Indicador de Performance: Jensen", ylim=c(-0.04,0.09),names.arg=names, col = "pink",ylab="Percentual %", cex.names=0.7)
+text(x = as.vector(bpJensen), y = JENSEN, 
+     label =  round(JENSEN, 4), pos = 3, 
+     col = "black",cex=0.7)
+}
+```
+
+## Treynor:
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+{
+mean(Rlwsa3)*100
+Betalwsa3$coef[2]
+Treynor<-mean(Rlwsa3)*100/Betalwsa3$coef[2];Treynor
+
+TREYNOR=c(mean(Rlwsa3)*100/Betalwsa3$coef[2],mean(Relet6)*100/Betaelet6$coef[2],mean(Ritsa4)*100/Betaitsa4$coef[2],mean(Rrent3)*100/Betarent3$coef[2],mean(Rbrfs3)*100/Betabrfs3$coef[2]);names;TREYNOR
+
+bpTreynor<-barplot(TREYNOR, main="Indicador de Performance: Treynor", ylim=c(-10,1),names.arg=names , col = "pink", ylab="Percentual %", cex.names=1)
+text(x = as.vector(bpTreynor), y = TREYNOR, 
+     label =  round(TREYNOR, 4), pos = 3, 
+     col = "black",cex=0.8)
+}
+```
+
+::: {style="text-align: justify"}
+:::
+
+## Sharpe:
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+{
+mean(Rlwsa3)
+sd(Rlwsa3)
+Sharpe<-mean(Rlwsa3)/sd(Rlwsa3);Sharpe
+
+SHARPE=c(mean(Rlwsa3)/sd(Rlwsa3),mean(Relet6)/sd(Relet6),mean(Ritsa4)/sd(Ritsa4),mean(Rrent3)/sd(Rrent3),mean(Rbrfs3)/sd(Rbrfs3));names;SHARPE
+
+bpSharpe<-barplot(SHARPE, main="Indicador de Performance: Sharpe", ylim=c(-5,1),names.arg=names , col = "pink", ylab="Percentual %", cex.names=1)
+text(x = as.vector(bpSharpe), y = SHARPE, 
+     label =  round(SHARPE, 4), pos = 3, 
+     col = "black",cex=0.9)
+}
+```
+
+::: {style="text-align: justify"}
+:::
+
+## Análise de Longo Prazo:
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+library(GetBCBData)
+library(fBasics)
+#Baixando os dados da selic:
+library(rbcb)
+#install.packages("GetBCBData")
+
+selic <- get_series(11, start_date = "2023-09-02",end_date ="2025-09-30");selic 
+library(zoo)
+Selic=zoo(selic$'11')
+index(Selic)=selic$date
+Selic;plot(Selic) 
+```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+library(yfR)
+library(GetBCBData)
+library(zoo)
+library(rbcb)
+
+# 1) IBOVESPA em formato zoo
+ibov_df <- yf_get("^BVSP", first_date = "2023-09-02", last_date = "2025-09-30")
+ibov <- zoo(ibov_df$price_adjusted, order.by = ibov_df$ref_date)  # objeto zoo
+
+# 3) Junta Ibov + Selic
+dados2 <- na.omit(merge(ibov, Selic))
+dados2 <- data.frame(Data = index(dados2), coredata(dados2))
+names(dados2) <- c("Data", "Ibovespa", "SELIC")
+attach(dados2); dados2
+
+# 4) Ativos em formato zoo
+ativos_df <- yf_get(
+  tickers = c("LWSA3.SA", "ELET6.SA", "ITSA4.SA", "RENT3.SA", "BRFS3.SA"),
+  first_date = "2023-09-02",
+  last_date = Sys.Date()
+)
+
+# Converte cada ativo para zoo separado (igual professor fez)
+lwsa3 <- zoo(ativos_df$price_adjusted[ativos_df$ticker == "LWSA3.SA"],
+             order.by = ativos_df$ref_date[ativos_df$ticker == "LWSA3.SA"])
+
+elet6 <- zoo(ativos_df$price_adjusted[ativos_df$ticker == "ELET6.SA"],
+             order.by = ativos_df$ref_date[ativos_df$ticker == "ELET6.SA"])
+
+itsa4 <- zoo(ativos_df$price_adjusted[ativos_df$ticker == "ITSA4.SA"],
+             order.by = ativos_df$ref_date[ativos_df$ticker == "ITSA4.SA"])
+
+rent3 <- zoo(ativos_df$price_adjusted[ativos_df$ticker == "RENT3.SA"],
+             order.by = ativos_df$ref_date[ativos_df$ticker == "RENT3.SA"])
+
+brfs3 <- zoo(ativos_df$price_adjusted[ativos_df$ticker == "BRFS3.SA"],
+             order.by = ativos_df$ref_date[ativos_df$ticker == "BRFS3.SA"])
+
+# 5) Merge geral (igual professor)
+Ativos <- merge(lwsa3, elet6, itsa4, rent3, brfs3, ibov, Selic)
+length(na.omit(Ativos[,1]))
+Data1 <- index(na.omit(Ativos)); length(Data1)
+
+# 6) Carteira BETA final
+CarteiraBETA <- data.frame(na.omit(Ativos), Data1)
+names(CarteiraBETA) <- c("lwsa3", "elet6", "itsa4", "rent3", "brfs3", "Ibovespa", "Selic", "Data1") #retirei o , "Data1"
+attach(CarteiraBETA)
+
+options(max.print = 99999)
+CarteiraBETA
+n <- length(CarteiraBETA[,1]); n
+CarteiraBETA[n,]
+
+# 7) Exportar
+write.table(CarteiraBETA, file = "BetaCarteira.txt", row.names = FALSE)
+```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+library(yfR)
+library(GetBCBData)
+library(zoo)
+library(rbcb)
+
+CarteiraBETA<-read.table("BetaCarteira.txt", head=T)
+names(CarteiraBETA)<-c("lwsa3", "elet6", "itsa4", "rent3", "brfs3","ibovespa","Selic", "Data1")  #retirei o , "Data1"
+attach(CarteiraBETA)
+CarteiraBETA; length((CarteiraBETA$Selic))
+
+CarteiraBETA$ibovespa;length(CarteiraBETA$ibovespa)
+CarteiraBETA$lwsa3;length(CarteiraBETA$lwsa3)
+CarteiraBETA$Selic;length(CarteiraBETA$Selic)
+
+ribov=diff(log(ibovespa));ribov;length(ribov)
+Ribov=ribov*100;Ribov;mean(Ribov)
+RSelic=CarteiraBETA$Selic[-1];length(CarteiraBETA$Selic[-1])
+RSelic
+
+rlwsa3=diff(log(CarteiraBETA$lwsa3[-1]));length(CarteiraBETA$lwsa3[-1])
+relet6=diff(log(CarteiraBETA$elet6[-1]));length(CarteiraBETA$elet6[-1])
+ritsa4=diff(log(CarteiraBETA$itsa4[-1]));length(CarteiraBETA$itsa4[-1])
+rrent3=diff(log(CarteiraBETA$rent3[-1]));length(CarteiraBETA$rent3[-1])
+rbrfs3=diff(log(CarteiraBETA$brfs3[-1]));length(CarteiraBETA$brfs3[-1])
+
+#RIbov=(rIbov-Selic[-1])
+Ribov=(ribov-RSelic);length(Ribov);Ribov
+Rlwsa3=rlwsa3-RSelic[-1]
+Rlwsa3;length(Rlwsa3)
+Relet6=relet6-RSelic[-1]
+Ritsa4=ritsa4-RSelic[-1]
+Rrent3=rrent3-RSelic[-1]
+Rbrfs3=rbrfs3-RSelic[-1]
+
+#Cálculo do Beta vivt3 (+...)------------------------------------------------------------------------------------------------------
+
+Betalwsa3=lm(Rlwsa3~Ribov[-1])
+Betalwsa3
+Betaelet6=lm(Relet6~Ribov[-1]);Betaelet6
+Betaitsa4=lm(Ritsa4~Ribov[-1]);Betaitsa4
+Betarent3=lm(Rrent3~Ribov[-1]);Betarent3
+Betabrfs3=lm(Rbrfs3~Ribov[-1]);Betabrfs3
+```
+
+## Beta mercado 
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+library(yfR)
+library(GetBCBData)
+library(zoo)
+library(rbcb)
+
+names=c("lwsa3", "elet6", "itsa4", "rent3", "brfs3")
+BETA.Mercado=c(Betalwsa3$coef[2],Betaelet6$coef[2],Betaitsa4$coef[2],Betarent3$coef[2],Betabrfs3$coef[2]);names;BETA.Mercado
+
+
+bpb<-barplot(BETA.Mercado, main="Cálculo do Beta-Mercado da Carteira Sugerida (48 meses- 2 anos)", ylim=c(0,3.0),names.arg=names, ylab="Percentual %", cex.names=1, col="pink")
+text(x = as.vector(bpb), y = BETA.Mercado, 
+     label =  round(BETA.Mercado, 2), pos = 3, 
+     col = "black",cex=0.8)
+```
+
+## Indicadores de Performance:
+
+## Jesen:
+
+-   ::: {style="text-align: justify"}
+    -   O **Alpha de Jensen** mede se um ativo **entregou um retorno acima ou abaixo do esperado**, considerando o risco assumido (β em relação ao mercado).
+
+    -   lwsa3 = 0.0422 (4,22%) → ótimo desempenho, entregou retorno acima do que o CAPM esperava.
+
+    -   rent3 = 0.0097 (0,97%) → levemente positivo, também agregou valor, mas em menor intensidade.
+
+    -   elet6 (-0,0148), itsa4 (-0,0088), brfs3 (-0,0105) → retornos negativos ajustados ao risco, ou seja, esses ativos não compensaram o risco que assumiram.
+    :::
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+{
+names=c("lwsa3", "elet6", "itsa4", "rent3", "brfs3")
+JENSEN=c(Betalwsa3$coef[1], Betaelet6$coef[1],Betaitsa4$coef[1],Betarent3$coef[1],Betabrfs3$coef[1]);names;JENSEN
+
+bpJensen<-barplot(JENSEN, main="Indicador de Performance: Jensen", ylim=c(-0.04,0.09),names.arg=names, col = "pink",ylab="Percentual %", cex.names=0.7)
+text(x = as.vector(bpJensen), y = JENSEN, 
+     label =  round(JENSEN, 4), pos = 3, 
+     col = "black",cex=0.7)
+}
+```
+
+## Treynor:
 
 -   ::: {style="text-align: justify"}
     -   Mede o retorno excedente por unidade de risco sistemático (β).
@@ -1986,7 +2113,7 @@ text(x = as.vector(bpJensen), y = JENSEN,
     -   rent3 (-4.45) ficou em situação intermediária.
     :::
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 {
 mean(Rlwsa3)*100
 Betalwsa3$coef[2]
@@ -2001,7 +2128,7 @@ text(x = as.vector(bpTreynor), y = TREYNOR,
 }
 ```
 
-### Indicador de performance de Sharpe:
+## Sharpe:
 
 -   ::: {style="text-align: justify"}
     -   Avalia se os retornos de um ativo compensam a volatilidade que ele apresenta.
@@ -2013,7 +2140,7 @@ text(x = as.vector(bpTreynor), y = TREYNOR,
     -   rent3 (-2.12) e brfs3 (-2.14) ficaram em posição intermediária, mas ainda negativos.
     :::
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 {
 mean(Rlwsa3)
 sd(Rlwsa3)
@@ -2030,7 +2157,7 @@ text(x = as.vector(bpSharpe), y = SHARPE,
 
 ## Conclusão sobre o resultado dos índices:
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
 # --- Pacotes necessários ---
 library(ggplot2)
 
@@ -2086,7 +2213,29 @@ Por outro lado, **ELET6 apresentou o pior desempenho**. Embora tenha Beta defens
 5.  **ELET6** → Pior desempenho, destruiu valor em todos os indicadores, mesmo sendo defensivo.
 :::
 
-## Modelo de precificação por Arbitragem (Modelo APT):
+## Análise de Curto Prazo:
+
+::: {style="text-align: justify"}
+:::
+
+```{r}
+
+```
+
+## Análise de Médio Prazo:
+
+::: {style="text-align: justify"}
+Analisar todas as medidas anteriores , com diferença apenas das datas
+:::
+
+```{r}
+
+```
+
+## Análise de Longo Prazo:
+
+::: {style="text-align: justify"}
+:::
 
 ```{r}
 

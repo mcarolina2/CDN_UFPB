@@ -1,0 +1,6 @@
+"Acao" "Beta" "p_valor"
+"LWSA3.SA" 1.4599 0
+"ELET6.SA" 0.8921 0
+"ITSA4.SA" 1.0792 0
+"RENT3.SA" 1.6032 0
+"BRFS3.SA" 0.6861 0.0009
