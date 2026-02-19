@@ -43,7 +43,7 @@ Nesse sentido, a análise dos ativos busca identificar aqueles que, dentro da te
     date()
     #setwd("")
 
-   # setwd("C:/Users/PC/Desktop/Projetos/CDN_UFPB/periodo4/Gestão de risco/Relatório_Maria_Carolina")
+       # setwd("C:/Users/PC/Desktop/Projetos/CDN_UFPB/periodo4/Gestão de risco/Relatório_Maria_Carolina")
 
 
 
